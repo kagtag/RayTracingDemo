@@ -116,6 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GeometricObjects\GeometricObject.cpp" />
+    <ClCompile Include="GeometricObjects\Primitives\Plane.cpp" />
     <ClCompile Include="GeometricObjects\Primitives\Sphere.cpp" />
     <ClCompile Include="BuildShadedObjects.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -144,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeometricObjects\GeometricObject.h" />
+    <ClInclude Include="GeometricObjects\Primitives\Plane.h" />
     <ClInclude Include="GeometricObjects\Primitives\Sphere.h" />
     <ClInclude Include="Tracers\MultipleObjects.h" />
     <ClInclude Include="Tracers\SingleSphere.h" />

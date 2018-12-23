@@ -10,13 +10,13 @@
 
 // geometric objects
 
-//#include "Plane.h"
+#include "Plane.h"
 #include "Sphere.h"
 
 // tracers
 
 #include "SingleSphere.h"
-//#include "MultipleObjects.h"
+#include "MultipleObjects.h"
 //#include "RayCast.h"
 
 // cameras
@@ -49,19 +49,33 @@ World::build(void) {
 
 	// view plane  
 
-	vp.set_hres(200);
-	vp.set_vres(200);
+	// General param setup
+	vp.set_hres(300);
+	vp.set_vres(300);
 	vp.set_pixel_size(1.0);
 	vp.set_gamma(1.0);
 	vp.set_samples(num_samples);
 
 	
 	background_color = black;
-	tracer_ptr = new SingleSphere(this);
 
-	sphere.set_center(0.0);
-	sphere.set_radius(85.0);
+	//Scene setup
 
+	tracer_ptr = new MultipleObjects(this);
+
+	Sphere* sphere_ptr = new Sphere();
+	sphere_ptr->set_center(0, -25, 0);
+	sphere_ptr->set_radius(80);
+	sphere_ptr->set_color(1, 0, 0);
+	add_object(sphere_ptr);
+
+	sphere_ptr = new Sphere(Point3D(0, 30, 0), 60);
+	sphere_ptr->set_color(1, 1, 0);
+	add_object(sphere_ptr);
+
+	Plane* plane_ptr = new Plane(Point3D(0, 0, 0), Normal(0, 1, 1));
+	plane_ptr->set_color(0.0, 0.3, 0.0);
+	add_object(plane_ptr);
 	
 }
 ///////////////////////////////////////////////
@@ -111,7 +125,7 @@ World::~World(void) {
 
 ofstream World::myfile{};
 int World::s_file_mark_1 = 3;
-int World::s_file_mark_2 = 0;
+int World::s_file_mark_2 = 2;
 
 //------------------------------------------------------------------ render_scene
 
@@ -142,9 +156,9 @@ World::render_scene(void) const {
 	myfile.open(filename,ios::out);
 
 	myfile << "P3\n" << hres << " " << vres << "\n255\n";
-
-	for (int c = hres; c > 0; c--)			// up
-		for (int r = 0; r < vres; r++) {	// across 					
+	for (int r = vres - 1; r >= 0; r--)		// up
+		for (int c = 0; c < hres; c++)	// across
+		 {	 					
 			ray.o = Point3D(s * (c - hres / 2.0 + 0.5), s * (r - vres / 2.0 + 0.5), zw);
 			
 			pixel_color = tracer_ptr->trace_ray(ray);
@@ -243,6 +257,7 @@ World::hit_objects(const Ray& ray) {
 			sr.hit_an_object	= true;
 			tmin 				= t;
 			//sr.material_ptr     = objects[j]->get_material();
+			sr.color = objects[j]->get_color();
 			sr.hit_point 		= ray.o + t * ray.d;
 			normal 				= sr.normal;
 			local_hit_point	 	= sr.local_hit_point;

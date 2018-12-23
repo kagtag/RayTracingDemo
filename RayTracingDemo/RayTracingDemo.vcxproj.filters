@@ -93,6 +93,9 @@
     <ClCompile Include="Tracers\MultipleObjects.cpp">
       <Filter>Tracers</Filter>
     </ClCompile>
+    <ClCompile Include="GeometricObjects\Primitives\Plane.cpp">
+      <Filter>GeometricObjects\Primitives</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\BBox.h">
@@ -154,6 +157,9 @@
     </ClInclude>
     <ClInclude Include="Tracers\MultipleObjects.h">
       <Filter>Tracers</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\Primitives\Plane.h">
+      <Filter>GeometricObjects\Primitives</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
