@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{4a9bb279-353b-4fca-9d18-49ceda6ebd43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GeometricObjects">
+      <UniqueIdentifier>{a549cbfc-b11a-4a71-8848-0911061814e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GeometricObjects\Primitives">
+      <UniqueIdentifier>{1e562b9e-d987-4cb9-957b-6c106e363658}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tracers">
+      <UniqueIdentifier>{e6bf0cc7-0be7-4808-b2de-cd2f07e1d577}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="World">
+      <UniqueIdentifier>{4de9cf75-b63f-44c9-a2cd-de6a826812e0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Utilities\BBox.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\Maths.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\Matrix.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\Mesh.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\Normal.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\ply.c">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\Point2D.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\Point3D.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\Ray.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\RGBColor.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\ShadeRec.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\Vector3D.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometricObjects\GeometricObject.cpp">
+      <Filter>GeometricObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometricObjects\Primitives\Sphere.cpp">
+      <Filter>GeometricObjects\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="Tracers\SingleSphere.cpp">
+      <Filter>Tracers</Filter>
+    </ClCompile>
+    <ClCompile Include="Tracers\Tracer.cpp">
+      <Filter>Tracers</Filter>
+    </ClCompile>
+    <ClCompile Include="World\ViewPlane.cpp">
+      <Filter>World</Filter>
+    </ClCompile>
+    <ClCompile Include="World\World.cpp">
+      <Filter>World</Filter>
+    </ClCompile>
+    <ClCompile Include="BuildShadedObjects.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tracers\MultipleObjects.cpp">
+      <Filter>Tracers</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Utilities\BBox.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Constants.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Maths.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Matrix.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Mesh.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Normal.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\ply.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Point2D.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Point3D.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Ray.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\RGBColor.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\ShadeRec.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Vector3D.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\GeometricObject.h">
+      <Filter>GeometricObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\Primitives\Sphere.h">
+      <Filter>GeometricObjects\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="Tracers\SingleSphere.h">
+      <Filter>Tracers</Filter>
+    </ClInclude>
+    <ClInclude Include="Tracers\Tracer.h">
+      <Filter>Tracers</Filter>
+    </ClInclude>
+    <ClInclude Include="World\ViewPlane.h">
+      <Filter>World</Filter>
+    </ClInclude>
+    <ClInclude Include="World\World.h">
+      <Filter>World</Filter>
+    </ClInclude>
+    <ClInclude Include="Tracers\MultipleObjects.h">
+      <Filter>Tracers</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
