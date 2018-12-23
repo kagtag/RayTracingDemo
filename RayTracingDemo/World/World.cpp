@@ -148,7 +148,7 @@ World::render_scene(void) const {
 }  
 
 
-void World::regular_sample(RGBColor& pixel_color, float zw, int r, int c) const
+void World::regular_sample(RGBColor& pixel_color, float zw, int r, int c, bool jittered = false) const
 {
 	//Common Setup
 
@@ -169,14 +169,19 @@ void World::regular_sample(RGBColor& pixel_color, float zw, int r, int c) const
 	{
 		for (int q = 0; q < n; q++)
 		{
-			pp.x = s*(c - 0.5*hres + (q + 0.5) / n);
-			pp.y = s*(r - 0.5*vres + (p + 0.5) / n);
+			pp.x = s*(c - 0.5*hres + (q + (jittered ? rand_float() : 0.5)) / n);
+			pp.y = s*(r - 0.5*vres + (p + (jittered ? rand_float() : 0.5)) / n);
 			ray.o = Point3D(pp.x, pp.y, zw);
 			pixel_color += tracer_ptr->trace_ray(ray);
 		}
 	}
 
 	pixel_color /= vp.num_samples;
+}
+
+void World::jittered_sample(RGBColor& pixel_color, float zw, int r, int c) const
+{
+	regular_sample(pixel_color, zw, r, c, true);
 }
 
 void World::random_sample(RGBColor& pixel_color, float zw, int r, int c) const
