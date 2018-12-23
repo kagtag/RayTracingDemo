@@ -99,6 +99,10 @@ class World {
 		void 
 		delete_lights(void);
 
+		void regular_sample(RGBColor& pixel_color, float zw, int r, int c) const;
+
+		void random_sample(RGBColor& pixel_color, float zw, int r, int c) const;
+
 		static ofstream myfile;
 		static int s_file_mark_1;
 		static int s_file_mark_2;

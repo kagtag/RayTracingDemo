@@ -117,16 +117,12 @@ void
 World::render_scene(void) const {
 
 	RGBColor	pixel_color;	 	
-	Ray			ray;					
-	int 		hres 	= vp.hres;
-	int 		vres 	= vp.vres;
-	float		s		= vp.s;
-	float		zw		= 100.0;				// hardwired in
+	//int 		hres 	= vp.hres;
+	//int 		vres 	= vp.vres;
+	//float		s		= vp.s;
 
-	int n = (int)sqrt((float)vp.num_samples);// Regular Sampling
-	Point2D pp; // sample point on a pixel
+	float		zw = 100.0;				// hardwired in
 
-	ray.d = Vector3D(0, 0, -1);
 	
 #if defined	GENERATE_PPM_DIRECTLY
 
@@ -137,25 +133,13 @@ World::render_scene(void) const {
 	
 	myfile.open(filename,ios::out);
 
-	myfile << "P3\n" << hres << " " << vres << "\n255\n";
-	for (int r = vres - 1; r >= 0; r--)		// up
-		for (int c = 0; c < hres; c++)	// across
+	myfile << "P3\n" << vp.hres << " " << vp.vres << "\n255\n";
+	for (int r = vp.vres - 1; r >= 0; r--)		// up
+		for (int c = 0; c < vp.hres; c++)	// across
 		 {	
-			pixel_color = black;
+			//regular_sample(pixel_color, zw, r, c);
+			random_sample(pixel_color, zw, r, c);
 
-			//Regular sampling n-by-n per pixel
-			for (int p = 0; p < n; p++)
-			{
-				for (int q = 0; q < n; q++)
-				{
-					pp.x = s*(c - 0.5*hres + (q + 0.5) / n);
-					pp.y = s*(r - 0.5*vres + (p + 0.5) / n);
-					ray.o = Point3D(pp.x, pp.y, zw);
-					pixel_color += tracer_ptr->trace_ray(ray);
-				}
-			}
-			
-			pixel_color /= vp.num_samples;
 			display_pixel(r, c, pixel_color);
 		}
 
@@ -163,6 +147,61 @@ World::render_scene(void) const {
 #endif
 }  
 
+
+void World::regular_sample(RGBColor& pixel_color, float zw, int r, int c) const
+{
+	//Common Setup
+
+	pixel_color = black;
+
+	Ray			ray;
+	ray.d = Vector3D(0, 0, -1);
+	int 		hres = vp.hres;
+	int 		vres = vp.vres;
+	float		s = vp.s;
+
+
+	int n = (int)sqrt((float)vp.num_samples);// Regular Sampling
+	Point2D pp; // sample point on a pixel
+
+	//Regular sampling n-by-n per pixel
+	for (int p = 0; p < n; p++)
+	{
+		for (int q = 0; q < n; q++)
+		{
+			pp.x = s*(c - 0.5*hres + (q + 0.5) / n);
+			pp.y = s*(r - 0.5*vres + (p + 0.5) / n);
+			ray.o = Point3D(pp.x, pp.y, zw);
+			pixel_color += tracer_ptr->trace_ray(ray);
+		}
+	}
+
+	pixel_color /= vp.num_samples;
+}
+
+void World::random_sample(RGBColor& pixel_color, float zw, int r, int c) const
+{
+	pixel_color = black;
+
+	Ray			ray;
+	ray.d = Vector3D(0, 0, -1);
+	int 		hres = vp.hres;
+	int 		vres = vp.vres;
+	float		s = vp.s;
+
+
+	Point2D pp; // sample point on a pixel
+
+	for (int p = 0; p < vp.num_samples; p++)
+	{
+		pp.x = s *(c - 0.5*hres + rand_float());
+		pp.y = s* (r - 0.5*vres + rand_float());
+		ray.o = Point3D(pp.x, pp.y, zw);
+		pixel_color += tracer_ptr->trace_ray(ray);
+	}
+
+	pixel_color /= vp.num_samples;
+}
 
 // ------------------------------------------------------------------ clamp
 
