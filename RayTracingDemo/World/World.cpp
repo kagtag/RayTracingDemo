@@ -21,7 +21,7 @@
 
 // cameras
 
-//#include "Pinhole.h"
+#include "Pinhole.h"
 
 // lights
 
@@ -58,6 +58,18 @@ World::build(void) {
 	
 	// Currently without lighting and complex models we cannot 
 	// see the effect of anti-aliasing.
+	
+	//// Pinhole Camera
+	//Pinhole* pinhole_ptr = new Pinhole;
+	//pinhole_ptr->set_eye(300, 400, 500);
+	//pinhole_ptr->set_lookat(0, 0, -50);
+	//pinhole_ptr->set_view_distance(400);//set d
+
+	//pinhole_ptr->compute_uvw();
+	//set_camera(pinhole_ptr);
+
+
+
 }
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
@@ -74,7 +86,7 @@ World::World(void)
 	:  	background_color(black),
 		tracer_ptr(NULL)
 		//ambient_ptr(new Ambient),
-		//camera_ptr(NULL)
+		,camera_ptr(NULL)
 {}
 
 
@@ -95,10 +107,10 @@ World::~World(void) {
 	//}
 	//		
 	//	
-	//if (camera_ptr) {
-	//	delete camera_ptr;
-	//	camera_ptr = NULL;
-	//}
+	if (camera_ptr) {
+		delete camera_ptr;
+		camera_ptr = NULL;
+	}
 	
 	delete_objects();	
 	//delete_lights();				
@@ -344,3 +356,29 @@ World::delete_objects(void) {
 //	lights.erase (lights.begin(), lights.end());
 //}
 
+
+// Axis-aligned perspective viewing
+// single ray per pixel.
+
+void 
+World::render_perspective(void) const
+{
+	//RGBColor pixel_color;
+	//Ray ray;
+
+	//int 		hres = vp.hres;
+	//int 		vres = vp.vres;
+	//float		s = vp.s;
+
+	//ray.o = Point3D(0.0, 0.0, eye);
+
+	//for (int r = vp.vres - 1; r >= 0; r--)		// up
+	//	for (int c = 0; c < vp.hres; c++)	// across
+	//	{
+	//		ray.d = Vector3D(s*(c - 0.5 * (hres - 1.0)),
+	//			s*(r - 0.5*(vres - 1.0)), -d);
+	//		ray.d.normalize();
+	//		pixel_color = tracer_ptr->trace_ray(ray);
+	//		display_pixel(r, c, pixel_color);
+	//	}
+}

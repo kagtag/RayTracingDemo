@@ -22,7 +22,7 @@
 #include "Ray.h"
 #include "SingleSphere.h"
 
-//#include "Camera.h"
+#include "Camera.h"
 //#include "Light.h"
 //#include "Ambient.h"
 
@@ -45,7 +45,7 @@ class World {
 		RGBColor					background_color;
 		Tracer*						tracer_ptr;
 		//Light*   					ambient_ptr;
-		//Camera*						camera_ptr;		
+		Camera*						camera_ptr;		
 		Sphere 						sphere;		// for Chapter 3 only
 		vector<GeometricObject*>	objects;		
 		//vector<Light*> 				lights;
@@ -69,8 +69,8 @@ class World {
 		//void
 		//set_ambient_light(Light* light_ptr);			
 		//
-		//void
-		//set_camera(Camera* c_ptr);	 
+		void
+		set_camera(Camera* c_ptr);	 
 
 		void 					
 		build(void);
@@ -90,7 +90,8 @@ class World {
 		ShadeRec
 		hit_objects(const Ray& ray);
 		
-						
+		void render_perspective(void) const;
+
 	private:
 		
 		void 
@@ -135,11 +136,11 @@ World::add_object(GeometricObject* object_ptr) {
 //}
 //
 //
-//// ------------------------------------------------------------------ set_camera
-//
-//inline void
-//World::set_camera(Camera* c_ptr) {
-//	camera_ptr = c_ptr;
-//}
+// ------------------------------------------------------------------ set_camera
+
+inline void
+World::set_camera(Camera* c_ptr) {
+	camera_ptr = c_ptr;
+}
 
 #endif

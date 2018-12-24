@@ -75,7 +75,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;;Cameras\;</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -83,7 +83,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>;Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>;Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;;Cameras\;</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -93,7 +93,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;;Cameras\;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -107,7 +107,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>;Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>;Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;;Cameras\;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -115,6 +115,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cameras\Camera.cpp" />
+    <ClCompile Include="Cameras\Pinhole.cpp" />
+    <ClCompile Include="Cameras\ThinLens.cpp" />
     <ClCompile Include="GeometricObjects\GeometricObject.cpp" />
     <ClCompile Include="GeometricObjects\Primitives\Plane.cpp" />
     <ClCompile Include="GeometricObjects\Primitives\Sphere.cpp" />
@@ -151,6 +154,9 @@
     <ClCompile Include="World\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cameras\Camera.h" />
+    <ClInclude Include="Cameras\Pinhole.h" />
+    <ClInclude Include="Cameras\ThinLens.h" />
     <ClInclude Include="GeometricObjects\GeometricObject.h" />
     <ClInclude Include="GeometricObjects\Primitives\Plane.h" />
     <ClInclude Include="GeometricObjects\Primitives\Sphere.h" />

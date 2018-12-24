@@ -31,6 +31,9 @@
     <Filter Include="Samplers">
       <UniqueIdentifier>{6e4be553-6365-4be9-a9dd-ad8d0b9583fd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Cameras">
+      <UniqueIdentifier>{de39ff6f-1543-47a4-8846-3b8ef5517d96}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utilities\BBox.cpp">
@@ -120,6 +123,15 @@
     <ClCompile Include="Samplers\Hammersley.cpp">
       <Filter>Samplers</Filter>
     </ClCompile>
+    <ClCompile Include="Cameras\Camera.cpp">
+      <Filter>Cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="Cameras\Pinhole.cpp">
+      <Filter>Cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="Cameras\ThinLens.cpp">
+      <Filter>Cameras</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\BBox.h">
@@ -205,6 +217,15 @@
     </ClInclude>
     <ClInclude Include="Samplers\Hammersley.h">
       <Filter>Samplers</Filter>
+    </ClInclude>
+    <ClInclude Include="Cameras\Camera.h">
+      <Filter>Cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="Cameras\Pinhole.h">
+      <Filter>Cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="Cameras\ThinLens.h">
+      <Filter>Cameras</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
