@@ -75,7 +75,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -83,7 +83,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>;Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>;Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -93,7 +93,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -107,7 +107,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>;Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>;Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -119,6 +119,13 @@
     <ClCompile Include="GeometricObjects\Primitives\Plane.cpp" />
     <ClCompile Include="GeometricObjects\Primitives\Sphere.cpp" />
     <ClCompile Include="BuildShadedObjects.cpp" />
+    <ClCompile Include="Samplers\Hammersley.cpp" />
+    <ClCompile Include="Samplers\Jittered.cpp" />
+    <ClCompile Include="Samplers\MultiJittered.cpp" />
+    <ClCompile Include="Samplers\NRooks.cpp" />
+    <ClCompile Include="Samplers\PureRandom.cpp" />
+    <ClCompile Include="Samplers\Regular.cpp" />
+    <ClCompile Include="Samplers\Sampler.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Tracers\MultipleObjects.cpp" />
     <ClCompile Include="Tracers\SingleSphere.cpp" />
@@ -147,6 +154,13 @@
     <ClInclude Include="GeometricObjects\GeometricObject.h" />
     <ClInclude Include="GeometricObjects\Primitives\Plane.h" />
     <ClInclude Include="GeometricObjects\Primitives\Sphere.h" />
+    <ClInclude Include="Samplers\Hammersley.h" />
+    <ClInclude Include="Samplers\Jittered.h" />
+    <ClInclude Include="Samplers\MultiJittered.h" />
+    <ClInclude Include="Samplers\NRooks.h" />
+    <ClInclude Include="Samplers\PureRandom.h" />
+    <ClInclude Include="Samplers\Regular.h" />
+    <ClInclude Include="Samplers\Sampler.h" />
     <ClInclude Include="Tracers\MultipleObjects.h" />
     <ClInclude Include="Tracers\SingleSphere.h" />
     <ClInclude Include="Tracers\Tracer.h" />

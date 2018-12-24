@@ -28,6 +28,9 @@
     <Filter Include="World">
       <UniqueIdentifier>{4de9cf75-b63f-44c9-a2cd-de6a826812e0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Samplers">
+      <UniqueIdentifier>{6e4be553-6365-4be9-a9dd-ad8d0b9583fd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utilities\BBox.cpp">
@@ -96,6 +99,27 @@
     <ClCompile Include="GeometricObjects\Primitives\Plane.cpp">
       <Filter>GeometricObjects\Primitives</Filter>
     </ClCompile>
+    <ClCompile Include="Samplers\Sampler.cpp">
+      <Filter>Samplers</Filter>
+    </ClCompile>
+    <ClCompile Include="Samplers\Jittered.cpp">
+      <Filter>Samplers</Filter>
+    </ClCompile>
+    <ClCompile Include="Samplers\PureRandom.cpp">
+      <Filter>Samplers</Filter>
+    </ClCompile>
+    <ClCompile Include="Samplers\Regular.cpp">
+      <Filter>Samplers</Filter>
+    </ClCompile>
+    <ClCompile Include="Samplers\MultiJittered.cpp">
+      <Filter>Samplers</Filter>
+    </ClCompile>
+    <ClCompile Include="Samplers\NRooks.cpp">
+      <Filter>Samplers</Filter>
+    </ClCompile>
+    <ClCompile Include="Samplers\Hammersley.cpp">
+      <Filter>Samplers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\BBox.h">
@@ -160,6 +184,27 @@
     </ClInclude>
     <ClInclude Include="GeometricObjects\Primitives\Plane.h">
       <Filter>GeometricObjects\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="Samplers\Sampler.h">
+      <Filter>Samplers</Filter>
+    </ClInclude>
+    <ClInclude Include="Samplers\Jittered.h">
+      <Filter>Samplers</Filter>
+    </ClInclude>
+    <ClInclude Include="Samplers\PureRandom.h">
+      <Filter>Samplers</Filter>
+    </ClInclude>
+    <ClInclude Include="Samplers\Regular.h">
+      <Filter>Samplers</Filter>
+    </ClInclude>
+    <ClInclude Include="Samplers\MultiJittered.h">
+      <Filter>Samplers</Filter>
+    </ClInclude>
+    <ClInclude Include="Samplers\NRooks.h">
+      <Filter>Samplers</Filter>
+    </ClInclude>
+    <ClInclude Include="Samplers\Hammersley.h">
+      <Filter>Samplers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
