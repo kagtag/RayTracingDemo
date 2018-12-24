@@ -116,6 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Cameras\Camera.cpp" />
+    <ClCompile Include="Cameras\FishEye.cpp" />
     <ClCompile Include="Cameras\Pinhole.cpp" />
     <ClCompile Include="Cameras\ThinLens.cpp" />
     <ClCompile Include="GeometricObjects\GeometricObject.cpp" />
@@ -155,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cameras\Camera.h" />
+    <ClInclude Include="Cameras\FishEye.h" />
     <ClInclude Include="Cameras\Pinhole.h" />
     <ClInclude Include="Cameras\ThinLens.h" />
     <ClInclude Include="GeometricObjects\GeometricObject.h" />
