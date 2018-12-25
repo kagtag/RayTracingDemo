@@ -135,6 +135,9 @@
     <ClCompile Include="Cameras\FishEye.cpp">
       <Filter>Cameras</Filter>
     </ClCompile>
+    <ClCompile Include="Cameras\Spherical.cpp">
+      <Filter>Cameras</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\BBox.h">
@@ -231,6 +234,9 @@
       <Filter>Cameras</Filter>
     </ClInclude>
     <ClInclude Include="Cameras\FishEye.h">
+      <Filter>Cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="Cameras\Spherical.h">
       <Filter>Cameras</Filter>
     </ClInclude>
   </ItemGroup>

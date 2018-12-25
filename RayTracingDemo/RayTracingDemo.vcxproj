@@ -118,6 +118,7 @@
     <ClCompile Include="Cameras\Camera.cpp" />
     <ClCompile Include="Cameras\FishEye.cpp" />
     <ClCompile Include="Cameras\Pinhole.cpp" />
+    <ClCompile Include="Cameras\Spherical.cpp" />
     <ClCompile Include="Cameras\ThinLens.cpp" />
     <ClCompile Include="GeometricObjects\GeometricObject.cpp" />
     <ClCompile Include="GeometricObjects\Primitives\Plane.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="Cameras\Camera.h" />
     <ClInclude Include="Cameras\FishEye.h" />
     <ClInclude Include="Cameras\Pinhole.h" />
+    <ClInclude Include="Cameras\Spherical.h" />
     <ClInclude Include="Cameras\ThinLens.h" />
     <ClInclude Include="GeometricObjects\GeometricObject.h" />
     <ClInclude Include="GeometricObjects\Primitives\Plane.h" />
