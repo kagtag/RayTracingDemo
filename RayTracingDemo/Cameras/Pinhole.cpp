@@ -86,8 +86,11 @@ Pinhole::render_scene(const World& w) {
 	vp.s /= zoom;
 	ray.o = eye;
 		
-	for (int r = 0; r < vp.vres; r++)			// up
-		for (int c = 0; c < vp.hres; c++) {		// across 					
+	//for (int r = 0; r < vp.vres; r++)			// up
+	//	for (int c = 0; c < vp.hres; c++) {		// across 
+
+	for (int r = vp.vres - 1; r >= 0; r--)		// up
+		for (int c = 0; c < vp.hres; c++)	{// across
 			L = black; 
 			
 			for (int p = 0; p < n; p++)			// up pixel

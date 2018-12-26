@@ -42,8 +42,8 @@ class ViewPlane {
 		void
 		set_gamut_display(const bool show);	
 		
-		void
-		set_samples(const int n);		
+		//void
+		//set_samples(const int n);		
 
 		//anti-aliasing
 		void set_sampler(Sampler* sp);
@@ -97,9 +97,9 @@ ViewPlane::set_gamut_display(const bool show) {
 
 // ------------------------------------------------------------------------------ set_samples
 
-inline void
-ViewPlane::set_samples(const int n) {
-	num_samples = n;
-}
+//inline void
+//ViewPlane::set_samples(const int n) {
+//	num_samples = n;
+//}
 
 #endif

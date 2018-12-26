@@ -17,7 +17,7 @@
 
 #include "SingleSphere.h"
 #include "MultipleObjects.h"
-//#include "RayCast.h"
+#include "RayCast.h"
 
 // cameras
 
@@ -26,10 +26,11 @@
 // lights
 
 //#include "Directional.h"
+#include "PointLight.h"
 
 // materials
 
-//#include "Matte.h"
+#include "Matte.h"
 
 // utilities
 
@@ -49,26 +50,36 @@ void
 World::build(void) {
 	vp.set_hres(400);
 	vp.set_vres(400);
-	vp.set_pixel_size(0.5);
+	vp.set_pixel_size(1.0);
 
 	background_color = black;
-	tracer_ptr = new MultipleObjects(this);
+	tracer_ptr = new RayCast(this);
 
-	vp.set_samples(4);
+	vp.set_samples(16);
 	
-	// Currently without lighting and complex models we cannot 
-	// see the effect of anti-aliasing.
-	
-	//// Pinhole Camera
-	//Pinhole* pinhole_ptr = new Pinhole;
-	//pinhole_ptr->set_eye(300, 400, 500);
-	//pinhole_ptr->set_lookat(0, 0, -50);
-	//pinhole_ptr->set_view_distance(400);//set d
+	Ambient *ambient_ptr = new Ambient;
+	ambient_ptr->scale_radiance(1.0);
+	set_ambient_light(ambient_ptr);
 
-	//pinhole_ptr->compute_uvw();
-	//set_camera(pinhole_ptr);
+	Pinhole *pinhole_ptr = new Pinhole;
+	pinhole_ptr->set_eye(0, 0, 500);
+	pinhole_ptr->set_lookat(5, 0, 0);
+	pinhole_ptr->set_view_distance(850.0);
+	pinhole_ptr->compute_uvw();
+	set_camera(pinhole_ptr);
 
+	PointLight* light_ptr2 = new PointLight;
+	light_ptr2->set_location(100, 50, 150);
+	light_ptr2->scale_radiance(3.0);
+	add_light(light_ptr2);
 
+	Matte *matte_ptr1 = new Matte;
+	matte_ptr1->set_ka(0.25);
+	matte_ptr1->set_kd(0.65);
+	matte_ptr1->set_cd(1, 1, 0);//yellow
+	Sphere* sphere_ptr1 = new Sphere(Point3D(10, 5, 0), 27);
+	sphere_ptr1->set_material(matte_ptr1);
+	add_object(sphere_ptr1);
 
 }
 ///////////////////////////////////////////////
@@ -84,9 +95,9 @@ World::build(void) {
 
 World::World(void)
 	:  	background_color(black),
-		tracer_ptr(NULL)
-		//ambient_ptr(new Ambient),
-		,camera_ptr(NULL)
+		tracer_ptr(NULL),
+		ambient_ptr(new Ambient),
+		camera_ptr(NULL)
 {}
 
 
@@ -101,24 +112,24 @@ World::~World(void) {
 	}
 	
 		
-	//if (ambient_ptr) {
-	//	delete ambient_ptr;
-	//	ambient_ptr = NULL;
-	//}
-	//		
-	//	
+	if (ambient_ptr) {
+		delete ambient_ptr;
+		ambient_ptr = NULL;
+	}
+			
+		
 	if (camera_ptr) {
 		delete camera_ptr;
 		camera_ptr = NULL;
 	}
 	
 	delete_objects();	
-	//delete_lights();				
+	delete_lights();				
 }
 
 ofstream World::myfile{};
-int World::s_file_mark_1 = 3;
-int World::s_file_mark_2 = 3;
+int World::s_file_mark_1 = 14;
+int World::s_file_mark_2 = 21;
 
 //------------------------------------------------------------------ render_scene
 
@@ -149,8 +160,8 @@ World::render_scene(void) const {
 	for (int r = vp.vres - 1; r >= 0; r--)		// up
 		for (int c = 0; c < vp.hres; c++)	// across
 		 {	
-			//regular_sample(pixel_color, zw, r, c);
-			random_sample(pixel_color, zw, r, c);
+			////regular_sample(pixel_color, zw, r, c);
+			//random_sample(pixel_color, zw, r, c);
 
 			display_pixel(r, c, pixel_color);
 		}
@@ -160,7 +171,7 @@ World::render_scene(void) const {
 }  
 
 
-void World::regular_sample(RGBColor& pixel_color, float zw, int r, int c, bool jittered = false) const
+void World::regular_sample(RGBColor& pixel_color, float zw, int r, int c, bool jittered) const
 {
 	//Common Setup
 
@@ -306,8 +317,8 @@ World::hit_objects(const Ray& ray) {
 		if (objects[j]->hit(ray, t, sr) && (t < tmin)) {
 			sr.hit_an_object	= true;
 			tmin 				= t;
-			//sr.material_ptr     = objects[j]->get_material();
-			sr.color = objects[j]->get_color();
+			sr.material_ptr     = objects[j]->get_material();
+			//sr.color = objects[j]->get_color();
 			sr.hit_point 		= ray.o + t * ray.d;
 			normal 				= sr.normal;
 			local_hit_point	 	= sr.local_hit_point;
@@ -343,18 +354,18 @@ World::delete_objects(void) {
 
 
 //------------------------------------------------------------------ delete_lights
-//
-//void
-//World::delete_lights(void) {
-//	int num_lights = lights.size();
-//	
-//	for (int j = 0; j < num_lights; j++) {
-//		delete lights[j];
-//		lights[j] = NULL;
-//	}	
-//	
-//	lights.erase (lights.begin(), lights.end());
-//}
+
+void
+World::delete_lights(void) {
+	int num_lights = lights.size();
+	
+	for (int j = 0; j < num_lights; j++) {
+		delete lights[j];
+		lights[j] = NULL;
+	}	
+	
+	lights.erase (lights.begin(), lights.end());
+}
 
 
 // Axis-aligned perspective viewing
@@ -381,4 +392,23 @@ World::render_perspective(void) const
 	//		pixel_color = tracer_ptr->trace_ray(ray);
 	//		display_pixel(r, c, pixel_color);
 	//	}
+}
+
+void
+World::open_ppm()
+{
+	char filename[512];
+	memset(filename, '\0', 512);
+	snprintf(filename, 512,
+		"D:\\GameProject\\RaytracingResult\\Chapter%d\\pic%d.ppm", s_file_mark_1, s_file_mark_2);
+
+	myfile.open(filename, ios::out);
+
+	myfile << "P3\n" << vp.hres << " " << vp.vres << "\n255\n";
+}
+
+void
+World::close_ppm()
+{
+	myfile.close();
 }

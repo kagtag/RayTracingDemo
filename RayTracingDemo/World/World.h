@@ -23,8 +23,8 @@
 #include "SingleSphere.h"
 
 #include "Camera.h"
-//#include "Light.h"
-//#include "Ambient.h"
+#include "Light.h"
+#include "Ambient.h"
 
 #include<iostream>
 #include<fstream>
@@ -44,11 +44,11 @@ class World {
 		ViewPlane					vp;
 		RGBColor					background_color;
 		Tracer*						tracer_ptr;
-		//Light*   					ambient_ptr;
+		Light*   					ambient_ptr;
 		Camera*						camera_ptr;		
 		Sphere 						sphere;		// for Chapter 3 only
 		vector<GeometricObject*>	objects;		
-		//vector<Light*> 				lights;
+		vector<Light*> 				lights;
 		
 #if !defined(GENERATE_PPM_DIRECTLY)
 		RenderThread* 				paintArea; 	//connection to skeleton - wxRaytracer.h
@@ -63,12 +63,12 @@ class World {
 		void 
 		add_object(GeometricObject* object_ptr);
 		
-		//void 
-		//add_light(Light* light_ptr); 
-		//
-		//void
-		//set_ambient_light(Light* light_ptr);			
-		//
+		void 
+		add_light(Light* light_ptr); 
+		
+		void
+		set_ambient_light(Light* light_ptr);			
+		
 		void
 		set_camera(Camera* c_ptr);	 
 
@@ -91,6 +91,10 @@ class World {
 		hit_objects(const Ray& ray);
 		
 		void render_perspective(void) const;
+
+		void open_ppm();
+
+		void close_ppm();
 
 	private:
 		
@@ -122,20 +126,20 @@ World::add_object(GeometricObject* object_ptr) {
 
 // ------------------------------------------------------------------ add_light
 
-//inline void 
-//World::add_light(Light* light_ptr) {  
-//	lights.push_back(light_ptr);
-//}
-//
-//
-//// ------------------------------------------------------------------ set_ambient_light
-//
-//inline void
-//World::set_ambient_light(Light* light_ptr) {
-//	ambient_ptr = light_ptr;
-//}
-//
-//
+inline void 
+World::add_light(Light* light_ptr) {  
+	lights.push_back(light_ptr);
+}
+
+
+// ------------------------------------------------------------------ set_ambient_light
+
+inline void
+World::set_ambient_light(Light* light_ptr) {
+	ambient_ptr = light_ptr;
+}
+
+
 // ------------------------------------------------------------------ set_camera
 
 inline void

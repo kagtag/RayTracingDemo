@@ -75,7 +75,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;;Cameras\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;;Cameras\;;Lights\;;BRDFs\;Materials\;</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -83,7 +83,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>;Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;;Cameras\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>;Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;;Cameras\;;Lights\;;BRDFs\;Materials\;</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -93,7 +93,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;;Cameras\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;;Cameras\;;Lights\;;BRDFs\;Materials\;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -107,7 +107,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>;Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;;Cameras\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>;Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;;Cameras\;;Lights\;;BRDFs\;Materials\;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -115,6 +115,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BRDFs\BRDF.cpp" />
+    <ClCompile Include="BRDFs\GlossySpecular.cpp" />
+    <ClCompile Include="BRDFs\Lambertian.cpp" />
+    <ClCompile Include="BRDFs\PerfectSpecular.cpp" />
     <ClCompile Include="Cameras\Camera.cpp" />
     <ClCompile Include="Cameras\FishEye.cpp" />
     <ClCompile Include="Cameras\Pinhole.cpp" />
@@ -124,6 +128,12 @@
     <ClCompile Include="GeometricObjects\Primitives\Plane.cpp" />
     <ClCompile Include="GeometricObjects\Primitives\Sphere.cpp" />
     <ClCompile Include="BuildShadedObjects.cpp" />
+    <ClCompile Include="Lights\Ambient.cpp" />
+    <ClCompile Include="Lights\Directional.cpp" />
+    <ClCompile Include="Lights\Light.cpp" />
+    <ClCompile Include="Lights\PointLight.cpp" />
+    <ClCompile Include="Materials\Material.cpp" />
+    <ClCompile Include="Materials\Matte.cpp" />
     <ClCompile Include="Samplers\Hammersley.cpp" />
     <ClCompile Include="Samplers\Jittered.cpp" />
     <ClCompile Include="Samplers\MultiJittered.cpp" />
@@ -133,6 +143,7 @@
     <ClCompile Include="Samplers\Sampler.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Tracers\MultipleObjects.cpp" />
+    <ClCompile Include="Tracers\RayCast.cpp" />
     <ClCompile Include="Tracers\SingleSphere.cpp" />
     <ClCompile Include="Tracers\Tracer.cpp" />
     <ClCompile Include="Utilities\BBox.cpp" />
@@ -156,6 +167,10 @@
     <ClCompile Include="World\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BRDFs\BRDF.h" />
+    <ClInclude Include="BRDFs\GlossySpecular.h" />
+    <ClInclude Include="BRDFs\Lambertian.h" />
+    <ClInclude Include="BRDFs\PerfectSpecular.h" />
     <ClInclude Include="Cameras\Camera.h" />
     <ClInclude Include="Cameras\FishEye.h" />
     <ClInclude Include="Cameras\Pinhole.h" />
@@ -164,6 +179,12 @@
     <ClInclude Include="GeometricObjects\GeometricObject.h" />
     <ClInclude Include="GeometricObjects\Primitives\Plane.h" />
     <ClInclude Include="GeometricObjects\Primitives\Sphere.h" />
+    <ClInclude Include="Lights\Ambient.h" />
+    <ClInclude Include="Lights\Directional.h" />
+    <ClInclude Include="Lights\Light.h" />
+    <ClInclude Include="Lights\PointLight.h" />
+    <ClInclude Include="Materials\Material.h" />
+    <ClInclude Include="Materials\Matte.h" />
     <ClInclude Include="Samplers\Hammersley.h" />
     <ClInclude Include="Samplers\Jittered.h" />
     <ClInclude Include="Samplers\MultiJittered.h" />
@@ -172,6 +193,7 @@
     <ClInclude Include="Samplers\Regular.h" />
     <ClInclude Include="Samplers\Sampler.h" />
     <ClInclude Include="Tracers\MultipleObjects.h" />
+    <ClInclude Include="Tracers\RayCast.h" />
     <ClInclude Include="Tracers\SingleSphere.h" />
     <ClInclude Include="Tracers\Tracer.h" />
     <ClInclude Include="Utilities\BBox.h" />

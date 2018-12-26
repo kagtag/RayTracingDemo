@@ -18,7 +18,7 @@
 #include "Ray.h"
 #include "ShadeRec.h"
 
-//class Material;	
+class Material;	
 
 
 //----------------------------------------------------------------------------------------------------- class GeometricObject
@@ -39,11 +39,11 @@ class GeometricObject {
 		virtual bool 												 
 		hit(const Ray& ray, double& t, ShadeRec& s) const = 0;	
 		
-		//virtual void 							// This needs to be virtual so that it can be overridden in Compound
-		//set_material(Material* mPtr); 			// It therefore shouldn't be inlined
-		//
-		//Material*					
-		//get_material(void) const;
+		virtual void 							// This needs to be virtual so that it can be overridden in Compound
+		set_material(Material* mPtr); 			// It therefore shouldn't be inlined
+		
+		Material*					
+		get_material(void) const;
 
 				   
 		// The following three functions are only required for Chapter 3
@@ -87,11 +87,13 @@ class GeometricObject {
 	
 	protected:
 	
-		//mutable Material*   material_ptr;   	// mutable allows the const functions Compound::hit, Instance::hit, and RegularGrid::hit to assign to material_ptr
+		mutable Material*   material_ptr;   	// mutable allows the const functions Compound::hit, Instance::hit, and RegularGrid::hit to assign to material_ptr
 		RGBColor   			color;				// only used for Bare Bones ray tracing
 	
 		GeometricObject&						
 		operator= (const GeometricObject& rhs);
+
+		bool shadows;
 };
 
 
