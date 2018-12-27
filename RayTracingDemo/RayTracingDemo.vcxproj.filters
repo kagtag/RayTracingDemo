@@ -180,6 +180,9 @@
     <ClCompile Include="BRDFs\PerfectSpecular.cpp">
       <Filter>BRDFs</Filter>
     </ClCompile>
+    <ClCompile Include="Materials\Phong.cpp">
+      <Filter>Materials</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\BBox.h">
@@ -313,6 +316,9 @@
     </ClInclude>
     <ClInclude Include="BRDFs\PerfectSpecular.h">
       <Filter>BRDFs</Filter>
+    </ClInclude>
+    <ClInclude Include="Materials\Phong.h">
+      <Filter>Materials</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
