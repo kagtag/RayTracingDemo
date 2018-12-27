@@ -49,6 +49,7 @@ class Matte: public Material {
 		
 	private:
 		
+		// ka and kd can be different.
 		Lambertian*		ambient_brdf;
 		Lambertian*		diffuse_brdf;
 };

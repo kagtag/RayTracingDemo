@@ -58,7 +58,7 @@ class Directional: public Light {
 		
 	private:
 
-		float		ls;			
+		float		ls;		// control brightness	
 		RGBColor	color;
 		Vector3D	dir;		// direction the light comes from
 };
