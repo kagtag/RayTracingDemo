@@ -85,4 +85,22 @@ Plane::hit(const Ray& ray, double& tmin, ShadeRec& sr) const {
 	return(false);
 }
 
+bool 
+Plane::shadow_hit(const Ray& ray, float& tmin) const
+{
+	// Specify whether to cast shadow or not
+	if (!shadows)
+		return false;
 
+	// Just remove code related to shading from the 
+	// eixisting hit function
+	float t = (a - ray.o) *n / (ray.d*n);
+
+	if (t > kEpsilon)
+	{
+		tmin = t;
+		return true;
+	}
+	else
+		return false;
+}

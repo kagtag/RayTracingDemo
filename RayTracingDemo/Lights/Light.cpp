@@ -42,6 +42,15 @@ Light::L(ShadeRec& s) {
 	return (black);
 }
 
+bool
+Light::casts_shadows()
+{
+	return shadows;
+}
 
-
+bool
+Light::in_shadow(const Ray& ray, const ShadeRec& sr)const
+{
+	return false;
+}
 

@@ -42,6 +42,12 @@ class Light {
 		virtual RGBColor														
 		L(ShadeRec& sr);
 
+		virtual bool
+			casts_shadows();
+
+		virtual bool
+			in_shadow(const Ray& ray, const ShadeRec& sr)const;
+
 protected:
 
 	// Listing 14.1

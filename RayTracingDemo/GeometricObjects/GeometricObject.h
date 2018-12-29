@@ -84,6 +84,9 @@ class GeometricObject {
 		virtual Normal
 		get_normal(const Point3D& p); 
 
+
+		virtual bool
+			shadow_hit(const Ray& ray, float& tmin)const;
 	
 	protected:
 	

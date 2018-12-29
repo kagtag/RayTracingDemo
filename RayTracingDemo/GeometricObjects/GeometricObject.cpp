@@ -137,5 +137,9 @@ GeometricObject::pdf(ShadeRec& sr) {
 	return (0.0);
 }  	
 
-									
+bool 
+GeometricObject::shadow_hit(const Ray& ray, float& tmin) const
+{
+	return false;
+}
 
