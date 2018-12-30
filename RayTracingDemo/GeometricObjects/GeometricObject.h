@@ -60,6 +60,7 @@ class GeometricObject {
 		virtual void 
 		set_bounding_box(void);
 		
+		// some primitives need to compute the BBox, like sphere and triangle
 		virtual BBox 
 		get_bounding_box(void);
 
@@ -87,7 +88,9 @@ class GeometricObject {
 
 		virtual bool
 			shadow_hit(const Ray& ray, float& tmin)const;
-	
+		
+		
+
 	protected:
 	
 		mutable Material*   material_ptr;   	// mutable allows the const functions Compound::hit, Instance::hit, and RegularGrid::hit to assign to material_ptr

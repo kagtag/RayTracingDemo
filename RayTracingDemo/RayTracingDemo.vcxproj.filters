@@ -43,6 +43,9 @@
     <Filter Include="BRDFs">
       <UniqueIdentifier>{2f579b31-395b-4283-b9fa-03268a148f4e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GeometricObjects\Triangles">
+      <UniqueIdentifier>{fdcc870f-0d78-4acb-a3c7-8650d5e328f5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utilities\BBox.cpp">
@@ -201,6 +204,21 @@
     <ClCompile Include="Lights\EnvironmentLight.cpp">
       <Filter>Lights</Filter>
     </ClCompile>
+    <ClCompile Include="GeometricObjects\Primitives\Torus.cpp">
+      <Filter>GeometricObjects\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometricObjects\Primitives\Box.cpp">
+      <Filter>GeometricObjects\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometricObjects\Triangles\Triangle.cpp">
+      <Filter>GeometricObjects\Triangles</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometricObjects\Primitives\Disk.cpp">
+      <Filter>GeometricObjects\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometricObjects\Primitives\OpenCylinder.cpp">
+      <Filter>GeometricObjects\Primitives</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\BBox.h">
@@ -355,6 +373,21 @@
     </ClInclude>
     <ClInclude Include="Lights\EnvironmentLight.h">
       <Filter>Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\Primitives\Torus.h">
+      <Filter>GeometricObjects\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\Primitives\Box.h">
+      <Filter>GeometricObjects\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\Triangles\Triangle.h">
+      <Filter>GeometricObjects\Triangles</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\Primitives\Disk.h">
+      <Filter>GeometricObjects\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\Primitives\OpenCylinder.h">
+      <Filter>GeometricObjects\Primitives</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

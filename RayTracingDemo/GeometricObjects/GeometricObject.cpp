@@ -142,4 +142,3 @@ GeometricObject::shadow_hit(const Ray& ray, float& tmin) const
 {
 	return false;
 }
-
