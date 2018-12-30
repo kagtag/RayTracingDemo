@@ -183,6 +183,9 @@
     <ClCompile Include="Materials\Phong.cpp">
       <Filter>Materials</Filter>
     </ClCompile>
+    <ClCompile Include="Lights\AmbientOccluder.cpp">
+      <Filter>Lights</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\BBox.h">
@@ -319,6 +322,9 @@
     </ClInclude>
     <ClInclude Include="Materials\Phong.h">
       <Filter>Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights\AmbientOccluder.h">
+      <Filter>Lights</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -29,6 +29,10 @@
 #include<iostream>
 #include<fstream>
 
+#include<string>
+
+using std::string;
+
 #define GENERATE_PPM_DIRECTLY
 
 using namespace std;
@@ -111,8 +115,10 @@ class World {
 		void jittered_sample(RGBColor& pixel_color, float zw, int r, int c) const;
 
 		static ofstream myfile;
-		static int s_file_mark_1;
-		static int s_file_mark_2;
+		static int s_chapter_number;
+		static int s_file_number;
+		static int s_file_quality;
+		static string s_file_sample;
 };
 
 

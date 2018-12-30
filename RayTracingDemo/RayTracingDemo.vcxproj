@@ -129,6 +129,7 @@
     <ClCompile Include="GeometricObjects\Primitives\Sphere.cpp" />
     <ClCompile Include="BuildShadedObjects.cpp" />
     <ClCompile Include="Lights\Ambient.cpp" />
+    <ClCompile Include="Lights\AmbientOccluder.cpp" />
     <ClCompile Include="Lights\Directional.cpp" />
     <ClCompile Include="Lights\Light.cpp" />
     <ClCompile Include="Lights\PointLight.cpp" />
@@ -181,6 +182,7 @@
     <ClInclude Include="GeometricObjects\Primitives\Plane.h" />
     <ClInclude Include="GeometricObjects\Primitives\Sphere.h" />
     <ClInclude Include="Lights\Ambient.h" />
+    <ClInclude Include="Lights\AmbientOccluder.h" />
     <ClInclude Include="Lights\Directional.h" />
     <ClInclude Include="Lights\Light.h" />
     <ClInclude Include="Lights\PointLight.h" />
