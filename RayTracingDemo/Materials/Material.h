@@ -28,8 +28,14 @@ class Material {
 		virtual RGBColor
 		shade(ShadeRec& sr);	
 
-		//// As shown in Listing 14.11
-		//virtual RGBColor area_light_shade(ShadeRec& sr);
+		// As shown in Listing 14.11
+		virtual RGBColor 
+			area_light_shade(ShadeRec& sr);// has to be defined for every material that render with area-light shading
+		
+		virtual RGBColor
+			get_Le(ShadeRec& sr)const;//only defined for Emissive and SV_Emissive
+
+
 
 		//virtual RGBColor path_shade(ShadeRec& sr);
 		

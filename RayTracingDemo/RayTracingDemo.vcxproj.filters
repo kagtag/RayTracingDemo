@@ -186,6 +186,18 @@
     <ClCompile Include="Lights\AmbientOccluder.cpp">
       <Filter>Lights</Filter>
     </ClCompile>
+    <ClCompile Include="Tracers\AreaLighting.cpp">
+      <Filter>Tracers</Filter>
+    </ClCompile>
+    <ClCompile Include="Materials\Emissive.cpp">
+      <Filter>Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights\AreaLight.cpp">
+      <Filter>Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometricObjects\Primitives\Rectangle.cpp">
+      <Filter>GeometricObjects\Primitives</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\BBox.h">
@@ -325,6 +337,18 @@
     </ClInclude>
     <ClInclude Include="Lights\AmbientOccluder.h">
       <Filter>Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Tracers\AreaLighting.h">
+      <Filter>Tracers</Filter>
+    </ClInclude>
+    <ClInclude Include="Materials\Emissive.h">
+      <Filter>Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights\AreaLight.h">
+      <Filter>Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\Primitives\Rectangle.h">
+      <Filter>GeometricObjects\Primitives</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

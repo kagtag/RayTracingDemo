@@ -133,7 +133,7 @@ GeometricObject::sample(void) {
 // returns the probability density function for area light shading
 		
 float
-GeometricObject::pdf(ShadeRec& sr) {
+GeometricObject::pdf(const ShadeRec& sr) {
 	return (0.0);
 }  	
 

@@ -76,7 +76,7 @@ AmbientOccluder::set_sampler(Sampler* s_ptr)
 void 
 AmbientOccluder::set_samples(const int num_samples)
 {
-	sampler_ptr = new MultiJittered(n);
+	sampler_ptr = new MultiJittered(num_samples);
 	sampler_ptr->map_samples_to_hemisphere(1); //Sample the whole hemisphere
 }
 

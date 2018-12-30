@@ -48,6 +48,12 @@ class Light {
 		virtual bool
 			in_shadow(const Ray& ray, const ShadeRec& sr)const;
 
+		virtual float
+			G(const ShadeRec& sr)const;
+
+		virtual float
+			pdf(const ShadeRec& sr)const;
+
 protected:
 
 	// Listing 14.1

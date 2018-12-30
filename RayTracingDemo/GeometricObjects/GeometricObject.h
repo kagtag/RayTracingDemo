@@ -73,7 +73,7 @@ class GeometricObject {
 		sample(void);
 		
 		virtual float
-		pdf(ShadeRec& sr); 
+		pdf(const ShadeRec& sr); 
 				
 		
 		// The following two functions allow us to simplify the code for smooth shaded triangle meshes
@@ -97,6 +97,7 @@ class GeometricObject {
 		operator= (const GeometricObject& rhs);
 
 		bool shadows;
+
 };
 
 
