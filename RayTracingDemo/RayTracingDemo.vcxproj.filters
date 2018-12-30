@@ -198,6 +198,9 @@
     <ClCompile Include="GeometricObjects\Primitives\Rectangle.cpp">
       <Filter>GeometricObjects\Primitives</Filter>
     </ClCompile>
+    <ClCompile Include="Lights\EnvironmentLight.cpp">
+      <Filter>Lights</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\BBox.h">
@@ -349,6 +352,9 @@
     </ClInclude>
     <ClInclude Include="GeometricObjects\Primitives\Rectangle.h">
       <Filter>GeometricObjects\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights\EnvironmentLight.h">
+      <Filter>Lights</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
