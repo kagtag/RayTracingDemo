@@ -124,6 +124,8 @@
     <ClCompile Include="Cameras\Pinhole.cpp" />
     <ClCompile Include="Cameras\Spherical.cpp" />
     <ClCompile Include="Cameras\ThinLens.cpp" />
+    <ClCompile Include="GeometricObjects\CompoundObjects\Compound.cpp" />
+    <ClCompile Include="GeometricObjects\CompoundObjects\SolidCylinder.cpp" />
     <ClCompile Include="GeometricObjects\GeometricObject.cpp" />
     <ClCompile Include="GeometricObjects\PartObjects\ConvexPartCylinder.cpp" />
     <ClCompile Include="GeometricObjects\PartObjects\ConvexPartSphere.cpp" />
@@ -190,6 +192,8 @@
     <ClInclude Include="Cameras\Pinhole.h" />
     <ClInclude Include="Cameras\Spherical.h" />
     <ClInclude Include="Cameras\ThinLens.h" />
+    <ClInclude Include="GeometricObjects\CompoundObjects\Compound.h" />
+    <ClInclude Include="GeometricObjects\CompoundObjects\SolidCylinder.h" />
     <ClInclude Include="GeometricObjects\GeometricObject.h" />
     <ClInclude Include="GeometricObjects\PartObjects\ConvexPartCylinder.h" />
     <ClInclude Include="GeometricObjects\PartObjects\ConvexPartSphere.h" />

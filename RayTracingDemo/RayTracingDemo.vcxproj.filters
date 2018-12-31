@@ -49,6 +49,9 @@
     <Filter Include="GeometricObjects\PartObjects">
       <UniqueIdentifier>{cd3949ae-0688-4c31-b838-b167ec8a6a9e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GeometricObjects\CompoundObjects">
+      <UniqueIdentifier>{8e002d14-f386-4b65-977e-e677c4e4fc5e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utilities\BBox.cpp">
@@ -228,6 +231,12 @@
     <ClCompile Include="GeometricObjects\PartObjects\ConvexPartCylinder.cpp">
       <Filter>GeometricObjects\PartObjects</Filter>
     </ClCompile>
+    <ClCompile Include="GeometricObjects\CompoundObjects\Compound.cpp">
+      <Filter>GeometricObjects\CompoundObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometricObjects\CompoundObjects\SolidCylinder.cpp">
+      <Filter>GeometricObjects\CompoundObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\BBox.h">
@@ -403,6 +412,12 @@
     </ClInclude>
     <ClInclude Include="GeometricObjects\PartObjects\ConvexPartCylinder.h">
       <Filter>GeometricObjects\PartObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\CompoundObjects\Compound.h">
+      <Filter>GeometricObjects\CompoundObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\CompoundObjects\SolidCylinder.h">
+      <Filter>GeometricObjects\CompoundObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
