@@ -176,7 +176,14 @@ Rectangle::hit(const Ray& ray, double& tmin, ShadeRec& sr) const {
 // ---------------------------------------------------------------- setSampler
 
 void 								
-Rectangle::set_sampler(Sampler* sampler) {
+Rectangle::set_sampler(Sampler* sampler) 
+{
+	if (sampler_ptr)
+	{
+		delete sampler_ptr;
+		sampler_ptr = NULL;
+	}
+
 	sampler_ptr = sampler;
 }
 

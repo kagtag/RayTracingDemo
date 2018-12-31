@@ -14,6 +14,7 @@
 #include "Sphere.h"
 #include "Box.h"
 #include "Rectangle.h"
+#include "Disk.h"
 
 // tracers
 
@@ -64,7 +65,7 @@
 
 ofstream World::myfile{};
 int World::s_chapter_number = 18;
-int World::s_file_number = 4;
+int World::s_file_number = 5;
 
 int World::s_file_quality = 0;
 string World::s_file_sample = "";
@@ -103,27 +104,22 @@ World::build(void) {
 
 	// define a rectangle for the rectangular light
 
-	float width = 4.0;				// for Figure 18.4(a) & (b)
-	float height = 4.0;
-	//	float width = 2.0;				// for Figure 18.4(c)
-	//	float height = 2.0;
-	Point3D center(0.0, 7.0, -7.0);	// center of each area light (rectangular, disk, and spherical)
-	Point3D p0(-0.5 * width, center.y - 0.5 * height, center.z);
-	Vector3D a(width, 0.0, 0.0);
-	Vector3D b(0.0, height, 0.0);
+	Point3D center(0.0, 7.0, -7.0);
+	float width = 4.0;
+	float radius = 0.56 * width;
 	Normal normal(0, 0, 1);
 
-	
 
-	Rectangle* rectangle_ptr = new Rectangle(p0, a, b, normal);
-	rectangle_ptr->set_material(emissive_ptr);
-	rectangle_ptr->set_sampler(sampler_ptr);
-	rectangle_ptr->set_shadows(false);
-	add_object(rectangle_ptr);  //
+	Disk* disk_ptr = new Disk(center, normal, radius);
+	disk_ptr->set_material(emissive_ptr);
+	disk_ptr->set_sampler(sampler_ptr);
+	disk_ptr->set_shadows(false);
+	disk_ptr->compute_uvw();
+	add_object(disk_ptr);
 
 	
 	AreaLight* area_light_ptr = new AreaLight(*this);
-	area_light_ptr->set_object(rectangle_ptr);
+	area_light_ptr->set_object(disk_ptr);
 	area_light_ptr->set_shadows(true);
 	add_light(area_light_ptr);
 
