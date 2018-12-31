@@ -46,6 +46,9 @@
     <Filter Include="GeometricObjects\Triangles">
       <UniqueIdentifier>{fdcc870f-0d78-4acb-a3c7-8650d5e328f5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GeometricObjects\PartObjects">
+      <UniqueIdentifier>{cd3949ae-0688-4c31-b838-b167ec8a6a9e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utilities\BBox.cpp">
@@ -219,6 +222,12 @@
     <ClCompile Include="GeometricObjects\Primitives\OpenCylinder.cpp">
       <Filter>GeometricObjects\Primitives</Filter>
     </ClCompile>
+    <ClCompile Include="GeometricObjects\PartObjects\ConvexPartSphere.cpp">
+      <Filter>GeometricObjects\PartObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometricObjects\PartObjects\ConvexPartCylinder.cpp">
+      <Filter>GeometricObjects\PartObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\BBox.h">
@@ -388,6 +397,12 @@
     </ClInclude>
     <ClInclude Include="GeometricObjects\Primitives\OpenCylinder.h">
       <Filter>GeometricObjects\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\PartObjects\ConvexPartSphere.h">
+      <Filter>GeometricObjects\PartObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\PartObjects\ConvexPartCylinder.h">
+      <Filter>GeometricObjects\PartObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
