@@ -89,11 +89,12 @@ class GeometricObject {
 		virtual bool
 			shadow_hit(const Ray& ray, float& tmin)const;
 		
-		
+		virtual void
+			set_shadows(bool _shadows);
 
 	protected:
 	
-		mutable Material*   material_ptr;   	// mutable allows the const functions Compound::hit, Instance::hit, and RegularGrid::hit to assign to material_ptr
+		mutable Material*   material_ptr;   	// mutable allows the const functions Compound::hit, Instance::hit, and RegularGrid::hit to assign to material_ptr		
 		RGBColor   			color;				// only used for Bare Bones ray tracing
 	
 		GeometricObject&						

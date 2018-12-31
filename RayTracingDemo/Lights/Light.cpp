@@ -48,6 +48,12 @@ Light::casts_shadows()
 	return shadows;
 }
 
+void
+Light::set_shadows(bool _shadows)
+{
+	shadows = _shadows;
+}
+
 bool
 Light::in_shadow(const Ray& ray, const ShadeRec& sr)const
 {

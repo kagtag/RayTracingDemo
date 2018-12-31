@@ -45,6 +45,9 @@ class Light {
 		virtual bool
 			casts_shadows();
 
+		virtual void
+			set_shadows(bool _shadows);
+
 		virtual bool
 			in_shadow(const Ray& ray, const ShadeRec& sr)const;
 

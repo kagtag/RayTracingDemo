@@ -30,6 +30,9 @@
 #include<fstream>
 
 #include<string>
+#include<algorithm>
+
+using std::find;
 
 using std::string;
 
@@ -66,7 +69,12 @@ class World {
 								
 		void 
 		add_object(GeometricObject* object_ptr);
-		
+
+		// vector objects is responsible to manage all objects generated in the sence.
+		// should remove unused objects to avoid memory leak.
+		void
+			remove_object(GeometricObject* object_ptr);
+
 		void 
 		add_light(Light* light_ptr); 
 		
@@ -129,6 +137,13 @@ World::add_object(GeometricObject* object_ptr) {
 	objects.push_back(object_ptr);	
 }
 
+inline void
+World::remove_object(GeometricObject* object_ptr)
+{
+	vector<GeometricObject*>::iterator iter = find(objects.begin(), objects.end(), object_ptr);
+	if(iter!= objects.end())
+		objects.erase(iter);
+}
 
 // ------------------------------------------------------------------ add_light
 

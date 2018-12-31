@@ -1,5 +1,65 @@
 #include"Box.h"
 
+// --------------------------------------------------------------------- default constructor
+
+Box::Box(void)
+	: x0(-1), x1(1), y0(-1), y1(1), z0(-1), z1(1)
+{}
+
+
+// --------------------------------------------------------------------- constructor
+
+Box::Box(const double _x0, const double _x1,
+	const double _y0, const double _y1,
+	const double _z0, const double _z1)
+	: x0(_x0), x1(_x1), y0(_y0), y1(_y1), z0(_z0), z1(_z1)
+{}
+
+
+// --------------------------------------------------------------------- constructor
+
+Box::Box(const Point3D p0, const Point3D p1)
+	: x0(p0.x), x1(p1.x), y0(p0.y), y1(p1.y), z0(p0.z), z1(p1.z)
+{}
+
+
+
+// --------------------------------------------------------------------- copy constructor
+
+Box::Box(const Box& bbox)
+	: x0(bbox.x0), x1(bbox.x1), y0(bbox.y0), y1(bbox.y1), z0(bbox.z0), z1(bbox.z1)
+{}
+
+
+// --------------------------------------------------------------------- assignment operator
+
+Box&
+Box::operator= (const Box& rhs) {
+	if (this == &rhs)
+		return (*this);
+
+	x0 = rhs.x0;
+	x1 = rhs.x1;
+	y0 = rhs.y0;
+	y1 = rhs.y1;
+	z0 = rhs.z0;
+	z1 = rhs.z1;
+
+	return (*this);
+}
+
+
+// --------------------------------------------------------------------- destructor
+
+Box::~Box(void) {}
+
+Box*
+Box::clone(void) const
+{
+	return (new Box(*this));
+}
+
+
 bool
 Box::hit(const Ray& ray, double& tmin, ShadeRec& sr)const
 {
@@ -40,7 +100,7 @@ Box::hit(const Ray& ray, double& tmin, ShadeRec& sr)const
 	}
 
 	double t0, t1;
-	//// End of common part with BBox::hit
+	//// End of common part with Box::hit
 
 	int face_in, face_out;
 

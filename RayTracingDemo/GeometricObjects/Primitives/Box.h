@@ -17,9 +17,14 @@ public:
 
 	Box(const Box& bbox);
 
+	virtual Box*
+		clone(void) const;
+
+
 	Box&
 		operator= (const Box& rhs);
 
+	virtual
 	~Box(void);
 
 

@@ -142,3 +142,9 @@ GeometricObject::shadow_hit(const Ray& ray, float& tmin) const
 {
 	return false;
 }
+
+void 
+GeometricObject::set_shadows(bool _shadows)
+{
+	shadows = _shadows;
+}

@@ -8,24 +8,32 @@
 
 // ---------------------------------------------------------------- default constructor
 	
-AreaLight::AreaLight(void)
+AreaLight::AreaLight(World& _world)
 	: 	Light(),
 		object_ptr(NULL),
-		material_ptr(NULL)
+		material_ptr(NULL),
+		world(_world)
 {}	
 
 
 // ---------------------------------------------------------------- copy constructor 
 	
 AreaLight::AreaLight(const AreaLight& al)
-	: 	Light(al) {
-	if(al.object_ptr)
-		object_ptr = al.object_ptr->clone(); 
-	else  object_ptr = NULL;
-	
-	if(al.material_ptr)
-		material_ptr = al.material_ptr->clone(); 
-	else  material_ptr = NULL;
+	: 	Light(al),
+		world(al.world)
+	{
+	if (al.object_ptr)
+	{
+		set_object(al.object_ptr->clone());
+
+		world.add_object(object_ptr); //world.objects is responsible for the management of object_ptr
+	}
+	else
+	{
+		object_ptr = NULL;
+		material_ptr = NULL;
+	}
+
 }
 
 
@@ -42,12 +50,12 @@ AreaLight::clone(void) const
  								
 AreaLight::~AreaLight(void) {
 	if (object_ptr) {
-		delete object_ptr;
+		//delete object_ptr; // this will be deleted by the final delete_objects(), then the GeometricObjects destructor will delete the material_ptr
 		object_ptr = NULL;
 	}
 	
 	if (material_ptr) {
-		delete material_ptr;
+		//delete material_ptr;
 		material_ptr = NULL;
 	}
 }
@@ -62,21 +70,31 @@ AreaLight::operator= (const AreaLight& rhs) {
 		
 	Light::operator=(rhs);
 	
+	world = rhs.world;
+
 	if (object_ptr) {
+
+		world.remove_object(object_ptr);// remove from the objects vector, otherwise it will be deleted twice
+
 		delete object_ptr;
 		object_ptr = NULL;
 	}
 
 	if (rhs.object_ptr)
-		object_ptr = rhs.object_ptr->clone();
-		
-	if (material_ptr) {
-		delete material_ptr;
-		material_ptr = NULL;
+	{
+		set_object(rhs.object_ptr->clone());//set object_ptr as well as material_ptr
+		world.add_object(object_ptr); // add the new object to World::objects vector
 	}
 
-	if (rhs.material_ptr)
-		material_ptr = rhs.material_ptr->clone();
+	// GeometricObjects copy constructor will handle material_ptr clone
+
+	//if (material_ptr) {
+	//	delete material_ptr;
+	//	material_ptr = NULL;
+	//}
+
+	//if (rhs.material_ptr)
+	//	material_ptr = rhs.material_ptr->clone();
 
 	return (*this);
 }

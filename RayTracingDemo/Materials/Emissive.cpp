@@ -1,5 +1,39 @@
 #include "Emissive.h"
 
+Emissive::Emissive(void)
+	:Material(),
+	ls(1.0),
+	ce(white)
+{}
+
+Emissive::Emissive(const Emissive& e)
+	: Material(e),
+	ls(e.ls),
+	ce(e.ce)
+{}
+
+Material*
+Emissive::clone(void) const {
+	return (new Emissive(*this));
+}
+
+Emissive&
+Emissive::operator=(const Emissive& rhs)
+{
+	if (this == &rhs)
+		return (*this);
+
+	Material::operator=(rhs);
+
+	ls = rhs.ls;
+	ce = rhs.ce;
+
+	return (*this);
+}
+
+Emissive::~Emissive(void)
+{}
+
 RGBColor
 Emissive::area_light_shade(ShadeRec& sr)
 {

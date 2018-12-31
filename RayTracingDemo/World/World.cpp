@@ -12,6 +12,8 @@
 
 #include "Plane.h"
 #include "Sphere.h"
+#include "Box.h"
+#include "Rectangle.h"
 
 // tracers
 
@@ -28,10 +30,13 @@
 #include "Directional.h"
 #include "PointLight.h"
 
+#include "AreaLight.h"
+
 // materials
 
 #include "Matte.h"
 #include "Phong.h"
+#include "Emissive.h"
 
 // utilities
 
@@ -48,7 +53,9 @@
 
 #include "AmbientOccluder.h"
 
-#include<Windows.h>
+
+
+#include "AreaLighting.h"
 
 //////////////////////////////////////////////
 // build functions
@@ -56,57 +63,114 @@
 #include "..\BuildShadedObjects.cpp"
 
 ofstream World::myfile{};
-int World::s_chapter_number = 17;
-int World::s_file_number = 3;
+int World::s_chapter_number = 18;
+int World::s_file_number = 4;
+
 int World::s_file_quality = 0;
 string World::s_file_sample = "";
+
 
 void
 World::build(void) {
 	
-	int num_samples = 16;
+	int num_samples = 1;   		// for Figure 18.4(a)
+	//	int num_samples = 100;   	// for Figure 18.4(b) & (c)
 	s_file_quality = num_samples;//
 
-	vp.set_hres(400);
-	vp.set_vres(400);
-	vp.set_samples(num_samples);
+	Sampler* sampler_ptr = new MultiJittered(num_samples);
+	s_file_sample = "MultiJittered";
 
-	tracer_ptr = new RayCast(this);
+	vp.set_hres(600);
+	vp.set_vres(600);
+	vp.set_sampler(sampler_ptr);
 
-	Regular* sampler_ptr = new Regular(num_samples);
-	s_file_sample = "Regular";//
+	background_color = RGBColor(0.5);
 
-	AmbientOccluder* occluder_ptr = new AmbientOccluder;
-	occluder_ptr->scale_radiance(1.0);
-	occluder_ptr->set_color(white);
-	occluder_ptr->set_min_amount(0.0);
-	occluder_ptr->set_sampler(sampler_ptr);
-	set_ambient_light(occluder_ptr);
+	tracer_ptr = new AreaLighting(this);
 
-	Pinhole* camera_ptr = new Pinhole;
-	camera_ptr->set_eye(25, 20, 45);
-	camera_ptr->set_lookat(0, 1, 0);
-	camera_ptr->set_view_distance(5000);
-	camera_ptr->compute_uvw();
-	set_camera(camera_ptr);
+	Pinhole* camera = new Pinhole;
+	camera->set_eye(-20, 10, 20);
+	camera->set_lookat(0, 2, 0);
+	camera->set_view_distance(1080);
+	camera->compute_uvw();
+	set_camera(camera);
+
+
+	Emissive* emissive_ptr = new Emissive;
+	emissive_ptr->scale_radiance(40.0);
+	emissive_ptr->set_ce(white);
+
+
+	// define a rectangle for the rectangular light
+
+	float width = 4.0;				// for Figure 18.4(a) & (b)
+	float height = 4.0;
+	//	float width = 2.0;				// for Figure 18.4(c)
+	//	float height = 2.0;
+	Point3D center(0.0, 7.0, -7.0);	// center of each area light (rectangular, disk, and spherical)
+	Point3D p0(-0.5 * width, center.y - 0.5 * height, center.z);
+	Vector3D a(width, 0.0, 0.0);
+	Vector3D b(0.0, height, 0.0);
+	Normal normal(0, 0, 1);
+
+	
+
+	Rectangle* rectangle_ptr = new Rectangle(p0, a, b, normal);
+	rectangle_ptr->set_material(emissive_ptr);
+	rectangle_ptr->set_sampler(sampler_ptr);
+	rectangle_ptr->set_shadows(false);
+	add_object(rectangle_ptr);  //
+
+	
+	AreaLight* area_light_ptr = new AreaLight(*this);
+	area_light_ptr->set_object(rectangle_ptr);
+	area_light_ptr->set_shadows(true);
+	add_light(area_light_ptr);
+
+
+	// Four axis aligned boxes
+
+	float box_width = 1.0; 		// x dimension
+	float box_depth = 1.0; 		// z dimension
+	float box_height = 4.5; 		// y dimension
+	float gap = 3.0;
 
 	Matte* matte_ptr1 = new Matte;
-	matte_ptr1->set_ka(0.75);
-	matte_ptr1->set_kd(0);
-	matte_ptr1->set_cd(1, 1, 0);
+	matte_ptr1->set_ka(0.25);
+	matte_ptr1->set_kd(0.75);
+	matte_ptr1->set_cd(0.4, 0.7, 0.4);     // green
 
-	Sphere* sphere_ptr1 = new Sphere(Point3D(0, 1, 0), 1);
-	sphere_ptr1->set_material(matte_ptr1);
-	add_object(sphere_ptr1);
+	Box* box_ptr0 = new Box(Point3D(-1.5 * gap - 2.0 * box_width, 0.0, -0.5 * box_depth),
+		Point3D(-1.5 * gap - box_width, box_height, 0.5 * box_depth));
+	box_ptr0->set_material(matte_ptr1);
+	add_object(box_ptr0);
+
+	Box* box_ptr1 = new Box(Point3D(-0.5 * gap - box_width, 0.0, -0.5 * box_depth),
+		Point3D(-0.5 * gap, box_height, 0.5 * box_depth));
+	box_ptr1->set_material(matte_ptr1->clone());
+	add_object(box_ptr1);
+
+	Box* box_ptr2 = new Box(Point3D(0.5 * gap, 0.0, -0.5 * box_depth),
+		Point3D(0.5 * gap + box_width, box_height, 0.5 * box_depth));
+	box_ptr2->set_material(matte_ptr1->clone());
+	add_object(box_ptr2);
+
+	Box* box_ptr3 = new Box(Point3D(1.5 * gap + box_width, 0.0, -0.5 * box_depth),
+		Point3D(1.5 * gap + 2.0 * box_width, box_height, 0.5 * box_depth));
+	box_ptr3->set_material(matte_ptr1->clone());
+	add_object(box_ptr3);
+
+
+	// ground plane
 
 	Matte* matte_ptr2 = new Matte;
-	matte_ptr2->set_ka(0.75);
-	matte_ptr2->set_kd(0);
-	matte_ptr2->set_cd(1);
+	matte_ptr2->set_ka(0.1);
+	matte_ptr2->set_kd(0.90);
+	matte_ptr2->set_cd(white);
 
-	Plane* plane_ptr1 = new Plane(Point3D(0), Normal(0, 1, 0));
-	plane_ptr1->set_material(matte_ptr2);
-	add_object(plane_ptr1);
+	Plane* plane_ptr = new Plane(Point3D(0.0), Normal(0, 1, 0));
+	plane_ptr->set_material(matte_ptr2);
+	add_object(plane_ptr);
 
 
 
@@ -421,6 +485,9 @@ World::render_perspective(void) const
 	//	}
 }
 
+
+extern void createDir(char* filePath);
+
 void
 World::open_ppm()
 {
@@ -433,7 +500,7 @@ World::open_ppm()
 	snprintf(fileName, 512, "%spic%d_%s_%d.ppm", filePath, s_file_number,s_file_sample.c_str(), s_file_quality);
 
 	
-	CreateDirectory(filePath, NULL);
+	createDir(filePath);
 
 	myfile.open(fileName, ios::out);
 

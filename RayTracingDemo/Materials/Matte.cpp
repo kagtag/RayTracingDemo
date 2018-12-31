@@ -138,8 +138,7 @@ Matte::area_light_shade(ShadeRec& sr)
 			}
 
 			if (!in_shadow)
-				L += diffuse_brdf->f(sr, wo, wi) * sr.w.lights[j]->L(sr) 
-				* sr.w.lights[j]->G(sr)* ndotwi / sr.w.lights[j]->pdf(sr);
+				L += diffuse_brdf->f(sr, wo, wi) * sr.w.lights[j]->L(sr) * sr.w.lights[j]->G(sr) * ndotwi / sr.w.lights[j]->pdf(sr);
 
 		}
 

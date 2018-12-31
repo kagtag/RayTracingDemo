@@ -49,7 +49,7 @@ class Rectangle: public GeometricObject {
 		get_normal(const Point3D& p);		
 		
 		virtual float												
-		pdf(ShadeRec& sr);
+		pdf(const ShadeRec& sr);
 		
 	private:
 	

@@ -1,5 +1,13 @@
 #include"World.h"
 
+#include<Windows.h>
+// Helper function, since adding <Windows.h> would have conflict with the
+// Rectangle class
+void createDir(char* filePath)
+{
+	CreateDirectory(filePath, NULL);
+}
+
 int main(void)
 {
 	World w; //construct a default object
@@ -14,3 +22,4 @@ int main(void)
 
 	return 0;
 }
+

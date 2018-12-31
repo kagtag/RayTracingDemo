@@ -16,15 +16,20 @@
 #include "Material.h"
 #include "GeometricObject.h"
 
+#include "World.h"
+
 // Geometric object must provide 3 services to the AreaLight class
 // 1. sample points on its surface
 // 2. pdf at each sample point
 // 3. the normal at each sample point
 
 class AreaLight: public Light {	
+
+	friend class World;
+
 	public:
 	
-		AreaLight(void);						
+		AreaLight(World& _world);						
 
 		AreaLight(const AreaLight& al);				
 
@@ -58,11 +63,13 @@ class AreaLight: public Light {
 	private:
 		
 		GeometricObject* 	object_ptr;
-		Material* 			material_ptr;	 // will be an emissive material
+		Material* 			material_ptr;	 // will be an emissive material, managed by the object_ptr!!!
+
 		Point3D				sample_point;    // sample point on the surface
 		Normal				light_normal;    // assigned in get_direction - which therefore can't be const for any light
 		Vector3D			wi;			     // unit direction from hit point being shaded to sample point on light surface			
-	
+		
+		World&				world;
 };
 
 
