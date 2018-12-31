@@ -109,7 +109,7 @@ Sphere::hit(const Ray& ray, double& tmin, ShadeRec& sr) const {
 
 
 bool
-Sphere::shadow_hit(const Ray & ray, float & tmin) const
+Sphere::shadow_hit(const Ray & ray, double& tmin) const
 {
 	// Specify whether to cast shadow or not
 	if (!shadows)

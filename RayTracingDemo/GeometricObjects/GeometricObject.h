@@ -87,7 +87,7 @@ class GeometricObject {
 
 
 		virtual bool
-			shadow_hit(const Ray& ray, float& tmin)const;
+			shadow_hit(const Ray& ray, double& tmin)const;
 		
 		virtual void
 			set_shadows(bool _shadows);

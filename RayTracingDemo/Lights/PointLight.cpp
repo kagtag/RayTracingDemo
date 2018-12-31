@@ -69,7 +69,7 @@ PointLight::L(ShadeRec& s) {
 bool 
 PointLight::in_shadow(const Ray& ray, const ShadeRec& sr)const
 {
-	float t;
+	double t;
 	int num_objects = sr.w.objects.size();
 	float d = location.distance(ray.o);
 

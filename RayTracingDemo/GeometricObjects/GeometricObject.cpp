@@ -138,7 +138,7 @@ GeometricObject::pdf(const ShadeRec& sr) {
 }  	
 
 bool 
-GeometricObject::shadow_hit(const Ray& ray, float& tmin) const
+GeometricObject::shadow_hit(const Ray& ray, double& tmin) const
 {
 	return false;
 }

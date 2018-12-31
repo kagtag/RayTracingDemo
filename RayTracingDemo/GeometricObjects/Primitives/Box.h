@@ -31,6 +31,9 @@ public:
 	virtual bool
 		hit(const Ray& ray, double& tmin, ShadeRec& sr)const;
 
+	virtual bool
+		shadow_hit(const Ray& ray, double& tmin) const;
+
 	Normal
 		get_normal(const int face_hit) const;
 };

@@ -96,7 +96,7 @@ AmbientOccluder::in_shadow(const Ray& ray, const ShadeRec& sr)const
 
 	// same as that for a directional light
 
-	float t;
+	double t;
 	int num_objects = sr.w.objects.size();
 
 	for (int j = 0; j < num_objects; ++j)

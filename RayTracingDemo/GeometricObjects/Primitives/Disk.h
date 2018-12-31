@@ -25,7 +25,7 @@ public:
 		hit(const Ray& ray, double& tmin, ShadeRec& sr) const;
 
 	virtual bool
-		shadow_hit(const Ray & ray, float & tmin) const;
+		shadow_hit(const Ray & ray, double& tmin) const;
 
 private:
 
