@@ -72,5 +72,22 @@ Directional::L(ShadeRec& s) {
 	return (ls * color);
 }
 
+bool
+Directional::in_shadow(const Ray& ray, const ShadeRec& sr)const
+{
+	// test if a shadow ray is blocked by an object
 
+	// same as that for a directional light
+
+	double t;
+	int num_objects = sr.w.objects.size();
+
+	for (int j = 0; j < num_objects; ++j)
+	{
+		if (sr.w.objects[j]->shadow_hit(ray, t))
+			return true;
+	}
+
+	return false;
+}
 

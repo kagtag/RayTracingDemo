@@ -133,4 +133,22 @@ Compound::hit(const Ray& ray, double& tmin, ShadeRec& sr) const {
 	return (hit);
 }
 
+bool
+Compound::shadow_hit(const Ray& ray, double& tmin) const
+{
+	double		t;
+	Normal		normal;
+	Point3D		local_hit_point;
+	//bool		hit = false;
+	tmin = kHugeValue;
+	int 		num_objects = objects.size();
 
+	for (int j = 0; j < num_objects; j++)
+		if (objects[j]->shadow_hit(ray, t) && (t < tmin)) {
+			//hit = true;
+			//tmin = t;
+			return true; // shadowed by one of the object 
+		}
+
+	return false;
+}

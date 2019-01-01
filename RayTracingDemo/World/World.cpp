@@ -74,35 +74,29 @@
 
 ofstream World::myfile{};
 int World::s_chapter_number = 18;
-int World::s_file_number = 8;
-string World::s_file_tag = "a";
+int World::s_file_number = 9;
+string World::s_file_tag = "";
 
 int World::s_file_quality = 0;
-string World::s_file_sample = "";
+string World::s_file_sample = "MultiJittered";
 
 
 void
 World::build(void) {
 	
 	int num_samples = 16;
-	s_file_quality = num_samples;
 
 	vp.set_hres(600);
 	vp.set_vres(400);
 	vp.set_samples(num_samples);
-	s_file_sample = "MultiJittered";
+	s_file_quality = num_samples;
 
 	tracer_ptr = new AreaLighting(this);
-
-	//Ambient* ambient_ptr = new Ambient;
-	//ambient_ptr->scale_radiance(0.0);
-	//set_ambient_light(ambient_ptr);				// for Figure 18.7(b)
 
 	AmbientOccluder* ambient_occluder_ptr = new AmbientOccluder;
 	ambient_occluder_ptr->set_sampler(new MultiJittered(num_samples));
 	ambient_occluder_ptr->set_min_amount(0.5);
-	//ambient_occluder_ptr->scale_radiance(1.0);
-	set_ambient_light(ambient_occluder_ptr);	// for Figure 18.7 (a) & (c)
+	set_ambient_light(ambient_occluder_ptr);
 
 
 	Pinhole* pinhole_ptr = new Pinhole;
@@ -112,10 +106,18 @@ World::build(void) {
 	pinhole_ptr->compute_uvw();
 	set_camera(pinhole_ptr);
 
-	//shared_ptr<Emissive> emissive_ptr(new Emissive);
+
+	Directional* light_ptr3 = new Directional;
+	light_ptr3->set_direction(150, 50, -50);
+	light_ptr3->scale_radiance(4.0);
+	light_ptr3->set_color(1.0, 0.25, 0.0);  // orange
+	light_ptr3->set_shadows(true);
+	add_light(light_ptr3);
+
+
 	Emissive* emissive_ptr = new Emissive;
 	emissive_ptr->scale_radiance(0.90);
-	emissive_ptr->set_ce(1,1,0.5);   			// white
+	emissive_ptr->set_ce(1.0, 1.0, 0.5); 	// yellow
 	add_material(emissive_ptr);
 
 	ConcaveSphere* sphere_ptr = new ConcaveSphere;
@@ -128,18 +130,17 @@ World::build(void) {
 	environment_light_ptr->set_material(emissive_ptr);
 	environment_light_ptr->set_sampler(new MultiJittered(num_samples));
 	environment_light_ptr->set_shadows(true);
-	add_light(environment_light_ptr);			// for Figure 18.7 (b) & (c)
+	add_light(environment_light_ptr);
 
 
-	float ka = 0.2;  	// common ambient reflection coefficient
+	float ka = 0.2;  // commom ambient reflection coefficient
 
-						// large sphere
+					 // large sphere
 
 	Matte* matte_ptr1 = new Matte;
 	matte_ptr1->set_ka(ka);
 	matte_ptr1->set_kd(0.60);
 	matte_ptr1->set_cd(0.75);
-	add_material(matte_ptr1);
 
 	Sphere* sphere_ptr1 = new Sphere(Point3D(38, 20, -24), 20);
 	sphere_ptr1->set_material(matte_ptr1);
@@ -152,7 +153,6 @@ World::build(void) {
 	matte_ptr2->set_ka(ka);
 	matte_ptr2->set_kd(0.5);
 	matte_ptr2->set_cd(0.85);
-	add_material(matte_ptr2);
 
 	Sphere* sphere_ptr2 = new Sphere(Point3D(34, 12, 13), 12);
 	sphere_ptr2->set_material(matte_ptr2);
@@ -165,7 +165,6 @@ World::build(void) {
 	matte_ptr3->set_ka(ka);
 	matte_ptr3->set_kd(0.5);
 	matte_ptr3->set_cd(0.75);
-	add_material(matte_ptr3);
 
 	Sphere* sphere_ptr3 = new Sphere(Point3D(-7, 15, 42), 16);
 	sphere_ptr3->set_material(matte_ptr3);
@@ -178,7 +177,6 @@ World::build(void) {
 	matte_ptr4->set_ka(ka);
 	matte_ptr4->set_kd(0.5);
 	matte_ptr4->set_cd(0.60);
-	add_material(matte_ptr4);
 
 	float bottom = 0.0;
 	float top = 85;
@@ -194,7 +192,6 @@ World::build(void) {
 	matte_ptr5->set_ka(ka);
 	matte_ptr5->set_kd(0.5);
 	matte_ptr5->set_cd(0.95);
-	add_material(matte_ptr5);
 
 	Box* box_ptr = new Box(Point3D(-35, 0, -110), Point3D(-25, 60, 65));
 	box_ptr->set_material(matte_ptr5);
@@ -207,13 +204,17 @@ World::build(void) {
 	matte_ptr6->set_ka(0.15);
 	matte_ptr6->set_kd(0.5);
 	matte_ptr6->set_cd(0.7);
-	add_material(matte_ptr6);
 
 	Plane* plane_ptr = new Plane(Point3D(0, 0.01, 0), Normal(0, 1, 0));
 	plane_ptr->set_material(matte_ptr6);
 	add_object(plane_ptr);
 
-
+	add_material(matte_ptr1);
+	add_material(matte_ptr2);
+	add_material(matte_ptr3);
+	add_material(matte_ptr4);
+	add_material(matte_ptr5);
+	add_material(matte_ptr6);
 }
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////

@@ -35,7 +35,10 @@ class OpenCylinder: public GeometricObject {
 						
 		virtual bool
 		hit(const Ray& ray, double& t, ShadeRec& sr) const;
-		
+
+		virtual bool
+			shadow_hit(const Ray& ray, double& tmin)const;
+
 	protected:
 	
 		double		y0;				// bottom y value
