@@ -237,6 +237,9 @@
     <ClCompile Include="GeometricObjects\CompoundObjects\SolidCylinder.cpp">
       <Filter>GeometricObjects\CompoundObjects</Filter>
     </ClCompile>
+    <ClCompile Include="GeometricObjects\Instance.cpp">
+      <Filter>GeometricObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\BBox.h">
@@ -418,6 +421,9 @@
     </ClInclude>
     <ClInclude Include="GeometricObjects\CompoundObjects\SolidCylinder.h">
       <Filter>GeometricObjects\CompoundObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\Instance.h">
+      <Filter>GeometricObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

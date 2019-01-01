@@ -127,6 +127,7 @@
     <ClCompile Include="GeometricObjects\CompoundObjects\Compound.cpp" />
     <ClCompile Include="GeometricObjects\CompoundObjects\SolidCylinder.cpp" />
     <ClCompile Include="GeometricObjects\GeometricObject.cpp" />
+    <ClCompile Include="GeometricObjects\Instance.cpp" />
     <ClCompile Include="GeometricObjects\PartObjects\ConvexPartCylinder.cpp" />
     <ClCompile Include="GeometricObjects\PartObjects\ConvexPartSphere.cpp" />
     <ClCompile Include="GeometricObjects\Primitives\Box.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="GeometricObjects\CompoundObjects\Compound.h" />
     <ClInclude Include="GeometricObjects\CompoundObjects\SolidCylinder.h" />
     <ClInclude Include="GeometricObjects\GeometricObject.h" />
+    <ClInclude Include="GeometricObjects\Instance.h" />
     <ClInclude Include="GeometricObjects\PartObjects\ConvexPartCylinder.h" />
     <ClInclude Include="GeometricObjects\PartObjects\ConvexPartSphere.h" />
     <ClInclude Include="GeometricObjects\Primitives\Box.h" />
