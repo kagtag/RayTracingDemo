@@ -31,6 +31,7 @@
 
 #include<string>
 #include<algorithm>
+#include<thread>
 
 using std::find;
 
@@ -56,6 +57,8 @@ class World {
 		Sphere 						sphere;		// for Chapter 3 only
 		vector<GeometricObject*>	objects;		
 		vector<Light*> 				lights;
+
+		vector<shared_ptr<Material>> materials;
 		
 #if !defined(GENERATE_PPM_DIRECTLY)
 		RenderThread* 				paintArea; 	//connection to skeleton - wxRaytracer.h
@@ -77,6 +80,9 @@ class World {
 
 		void 
 		add_light(Light* light_ptr); 
+
+		void
+			add_material(Material* shared_ptr);
 		
 		void
 		set_ambient_light(Light* light_ptr);			
@@ -116,6 +122,9 @@ class World {
 		void 
 		delete_lights(void);
 
+		void
+			delete_materials(void);
+
 		void regular_sample(RGBColor& pixel_color, float zw, int r, int c, bool jittered = false) const;
 
 		void random_sample(RGBColor& pixel_color, float zw, int r, int c) const;
@@ -127,6 +136,7 @@ class World {
 		static int s_file_number;
 		static int s_file_quality;
 		static string s_file_sample;
+		static string s_file_tag;
 };
 
 
@@ -152,6 +162,14 @@ World::add_light(Light* light_ptr) {
 	lights.push_back(light_ptr);
 }
 
+inline void
+World::add_material(Material* s_ptr)
+{
+	shared_ptr<Material> ptr(s_ptr);
+	materials.push_back(ptr);
+	cout << ptr.use_count() << endl;
+	int k = 0;
+}
 
 // ------------------------------------------------------------------ set_ambient_light
 

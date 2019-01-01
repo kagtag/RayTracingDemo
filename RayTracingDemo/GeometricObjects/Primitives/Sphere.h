@@ -47,7 +47,7 @@ class Sphere: public GeometricObject {
 		virtual bool
 			shadow_hit(const Ray & ray, double& tmin) const;
 		
-	private:
+	protected:
 	
 		Point3D 	center;   			// center coordinates as a point  
 		double 		radius;				// the radius 

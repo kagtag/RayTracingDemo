@@ -43,7 +43,7 @@ GeometricObject::operator= (const GeometricObject& rhs) {
 	color = rhs.color;
 	
 	if (material_ptr) {
-		delete material_ptr;
+		//delete material_ptr;
 		material_ptr = NULL;
 	}
 
@@ -60,7 +60,7 @@ GeometricObject::operator= (const GeometricObject& rhs) {
 
 GeometricObject::~GeometricObject (void) {	
 	if (material_ptr) {
-		delete material_ptr;
+		//delete material_ptr;
 		material_ptr = NULL;
 	}
 }

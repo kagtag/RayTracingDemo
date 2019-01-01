@@ -12,6 +12,19 @@ class EnvironmentLight : public Light
 {
 public:
 
+	EnvironmentLight();
+
+	EnvironmentLight(const EnvironmentLight& el);
+
+	virtual Light*
+		clone(void) const;
+
+	virtual
+		~EnvironmentLight(void);
+
+	EnvironmentLight&
+		operator= (const EnvironmentLight& rhs);
+
 	void set_sampler(Sampler* sampler);
 
 	virtual Vector3D
@@ -26,6 +39,9 @@ public:
 
 	virtual float
 		pdf(const ShadeRec& sr)const;
+
+	void
+		set_material(Material* mPtr);
 
 private:
 

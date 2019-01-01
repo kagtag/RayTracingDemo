@@ -240,6 +240,9 @@
     <ClCompile Include="GeometricObjects\Instance.cpp">
       <Filter>GeometricObjects</Filter>
     </ClCompile>
+    <ClCompile Include="GeometricObjects\Primitives\ConcaveSphere.cpp">
+      <Filter>GeometricObjects\Primitives</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\BBox.h">
@@ -424,6 +427,9 @@
     </ClInclude>
     <ClInclude Include="GeometricObjects\Instance.h">
       <Filter>GeometricObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\Primitives\ConcaveSphere.h">
+      <Filter>GeometricObjects\Primitives</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

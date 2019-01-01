@@ -20,6 +20,10 @@
 
 #include "Instance.h"
 
+#include "CompoundObjects\SolidCylinder.h"
+
+#include "ConcaveSphere.h"
+
 // tracers
 
 #include "SingleSphere.h"
@@ -36,6 +40,7 @@
 #include "PointLight.h"
 
 #include "AreaLight.h"
+#include "EnvironmentLight.h"
 
 // materials
 
@@ -68,8 +73,9 @@
 #include "..\BuildShadedObjects.cpp"
 
 ofstream World::myfile{};
-int World::s_chapter_number = 19;
-int World::s_file_number = 5;
+int World::s_chapter_number = 18;
+int World::s_file_number = 8;
+string World::s_file_tag = "a";
 
 int World::s_file_quality = 0;
 string World::s_file_sample = "";
@@ -78,67 +84,135 @@ string World::s_file_sample = "";
 void
 World::build(void) {
 	
-	int num_samples = 1;
+	int num_samples = 16;
 	s_file_quality = num_samples;
 
-	vp.set_hres(400);
+	vp.set_hres(600);
 	vp.set_vres(400);
 	vp.set_samples(num_samples);
-	s_file_sample = "Regular";
+	s_file_sample = "MultiJittered";
 
-	tracer_ptr = new RayCast(this);
+	tracer_ptr = new AreaLighting(this);
+
+	//Ambient* ambient_ptr = new Ambient;
+	//ambient_ptr->scale_radiance(0.0);
+	//set_ambient_light(ambient_ptr);				// for Figure 18.7(b)
+
+	AmbientOccluder* ambient_occluder_ptr = new AmbientOccluder;
+	ambient_occluder_ptr->set_sampler(new MultiJittered(num_samples));
+	ambient_occluder_ptr->set_min_amount(0.5);
+	//ambient_occluder_ptr->scale_radiance(1.0);
+	set_ambient_light(ambient_occluder_ptr);	// for Figure 18.7 (a) & (c)
+
 
 	Pinhole* pinhole_ptr = new Pinhole;
-	pinhole_ptr->set_eye(25, 200, 100);
-	pinhole_ptr->set_lookat(-0.5, 0, 0);
-	pinhole_ptr->set_view_distance(8000);
+	pinhole_ptr->set_eye(100, 45, 100);
+	pinhole_ptr->set_lookat(-10, 40, 0);
+	pinhole_ptr->set_view_distance(400);
 	pinhole_ptr->compute_uvw();
 	set_camera(pinhole_ptr);
 
+	//shared_ptr<Emissive> emissive_ptr(new Emissive);
+	Emissive* emissive_ptr = new Emissive;
+	emissive_ptr->scale_radiance(0.90);
+	emissive_ptr->set_ce(1,1,0.5);   			// white
+	add_material(emissive_ptr);
 
-	PointLight* light_ptr1 = new PointLight;
-	light_ptr1->set_location(1, 5, 0);
-	light_ptr1->scale_radiance(3.0);
-	light_ptr1->set_shadows(true);
-	add_light(light_ptr1);
+	ConcaveSphere* sphere_ptr = new ConcaveSphere;
+	sphere_ptr->set_radius(1000000.0);
+	sphere_ptr->set_material(emissive_ptr);
+	sphere_ptr->set_shadows(false);
+	add_object(sphere_ptr);
+
+	EnvironmentLight* environment_light_ptr = new EnvironmentLight;
+	environment_light_ptr->set_material(emissive_ptr);
+	environment_light_ptr->set_sampler(new MultiJittered(num_samples));
+	environment_light_ptr->set_shadows(true);
+	add_light(environment_light_ptr);			// for Figure 18.7 (b) & (c)
 
 
-	// yellow triangle
+	float ka = 0.2;  	// common ambient reflection coefficient
+
+						// large sphere
 
 	Matte* matte_ptr1 = new Matte;
-	matte_ptr1->set_ka(0.25);
-	matte_ptr1->set_kd(0.75);
-	matte_ptr1->set_cd(1, 1, 0);
+	matte_ptr1->set_ka(ka);
+	matte_ptr1->set_kd(0.60);
+	matte_ptr1->set_cd(0.75);
+	add_material(matte_ptr1);
 
-	Triangle* triangle_ptr1 = new Triangle(Point3D(2, 0.5, 5), Point3D(2, 1.5, -5), Point3D(-1, 0, -4));
-	triangle_ptr1->set_material(matte_ptr1);
-	add_object(triangle_ptr1);
+	Sphere* sphere_ptr1 = new Sphere(Point3D(38, 20, -24), 20);
+	sphere_ptr1->set_material(matte_ptr1);
+	add_object(sphere_ptr1);
 
 
-	// dark green triangle (transformed)
+	// small sphere
 
 	Matte* matte_ptr2 = new Matte;
-	matte_ptr2->set_ka(0.25);
-	matte_ptr2->set_kd(0.75);
-	matte_ptr2->set_cd(0.0, 0.5, 0.41);
+	matte_ptr2->set_ka(ka);
+	matte_ptr2->set_kd(0.5);
+	matte_ptr2->set_cd(0.85);
+	add_material(matte_ptr2);
 
-	Instance* triangle_ptr2 = new Instance(new Triangle(Point3D(2, 1, 5), Point3D(2, 0.5, -5), Point3D(-1, -1, -4)));
-	triangle_ptr2->rotate_y(120);
-	triangle_ptr2->set_material(matte_ptr2);
-	add_object(triangle_ptr2);
+	Sphere* sphere_ptr2 = new Sphere(Point3D(34, 12, 13), 12);
+	sphere_ptr2->set_material(matte_ptr2);
+	add_object(sphere_ptr2);
 
 
-	// brown triangle (transformed)
+	// medium sphere
 
 	Matte* matte_ptr3 = new Matte;
-	matte_ptr3->set_ka(0.25);
-	matte_ptr3->set_kd(0.75);
-	matte_ptr3->set_cd(0.71, 0.40, 0.16);
+	matte_ptr3->set_ka(ka);
+	matte_ptr3->set_kd(0.5);
+	matte_ptr3->set_cd(0.75);
+	add_material(matte_ptr3);
 
-	Instance* triangle_ptr3 = new Instance(new Triangle(Point3D(2, 0, 5), Point3D(2, 1, -5), Point3D(-1, 0, -4)));
-	triangle_ptr3->rotate_y(240);
-	triangle_ptr3->set_material(matte_ptr3);
-	add_object(triangle_ptr3);
+	Sphere* sphere_ptr3 = new Sphere(Point3D(-7, 15, 42), 16);
+	sphere_ptr3->set_material(matte_ptr3);
+	add_object(sphere_ptr3);
+
+
+	// cylinder
+
+	Matte* matte_ptr4 = new Matte;
+	matte_ptr4->set_ka(ka);
+	matte_ptr4->set_kd(0.5);
+	matte_ptr4->set_cd(0.60);
+	add_material(matte_ptr4);
+
+	float bottom = 0.0;
+	float top = 85;
+	float radius = 22;
+	SolidCylinder* cylinder_ptr = new SolidCylinder(bottom, top, radius);
+	cylinder_ptr->set_material(matte_ptr4);
+	add_object(cylinder_ptr);
+
+
+	// box
+
+	Matte* matte_ptr5 = new Matte;
+	matte_ptr5->set_ka(ka);
+	matte_ptr5->set_kd(0.5);
+	matte_ptr5->set_cd(0.95);
+	add_material(matte_ptr5);
+
+	Box* box_ptr = new Box(Point3D(-35, 0, -110), Point3D(-25, 60, 65));
+	box_ptr->set_material(matte_ptr5);
+	add_object(box_ptr);
+
+
+	// ground plane
+
+	Matte* matte_ptr6 = new Matte;
+	matte_ptr6->set_ka(0.15);
+	matte_ptr6->set_kd(0.5);
+	matte_ptr6->set_cd(0.7);
+	add_material(matte_ptr6);
+
+	Plane* plane_ptr = new Plane(Point3D(0, 0.01, 0), Normal(0, 1, 0));
+	plane_ptr->set_material(matte_ptr6);
+	add_object(plane_ptr);
+
 
 }
 ///////////////////////////////////////////////
@@ -183,7 +257,8 @@ World::~World(void) {
 	}
 	
 	delete_objects();	
-	delete_lights();				
+	delete_lights();
+	delete_materials();
 }
 
 
@@ -424,6 +499,18 @@ World::delete_lights(void) {
 	lights.erase (lights.begin(), lights.end());
 }
 
+void 
+World::delete_materials(void)
+{
+	int num_materials = materials.size();
+
+	for (int j = 0; j < num_materials; j++) {
+		materials[j] = nullptr;
+	}
+
+	materials.erase(materials.begin(), materials.end());
+}
+
 
 // Axis-aligned perspective viewing
 // single ray per pixel.
@@ -463,7 +550,7 @@ World::open_ppm()
 	memset(fileName, '\0', 512);
 
 	snprintf(filePath, 512, "D:\\GameProject\\RaytracingResult\\Chapter%d\\", s_chapter_number);
-	snprintf(fileName, 512, "%spic%d_%s_%d.ppm", filePath, s_file_number,s_file_sample.c_str(), s_file_quality);
+	snprintf(fileName, 512, "%spic%d_%s_%s_%d.ppm", filePath, s_file_number,s_file_tag.c_str(),s_file_sample.c_str(), s_file_quality);
 
 	
 	createDir(filePath);

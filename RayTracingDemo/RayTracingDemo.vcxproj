@@ -131,6 +131,7 @@
     <ClCompile Include="GeometricObjects\PartObjects\ConvexPartCylinder.cpp" />
     <ClCompile Include="GeometricObjects\PartObjects\ConvexPartSphere.cpp" />
     <ClCompile Include="GeometricObjects\Primitives\Box.cpp" />
+    <ClCompile Include="GeometricObjects\Primitives\ConcaveSphere.cpp" />
     <ClCompile Include="GeometricObjects\Primitives\Disk.cpp" />
     <ClCompile Include="GeometricObjects\Primitives\OpenCylinder.cpp" />
     <ClCompile Include="GeometricObjects\Primitives\Plane.cpp" />
@@ -200,6 +201,7 @@
     <ClInclude Include="GeometricObjects\PartObjects\ConvexPartCylinder.h" />
     <ClInclude Include="GeometricObjects\PartObjects\ConvexPartSphere.h" />
     <ClInclude Include="GeometricObjects\Primitives\Box.h" />
+    <ClInclude Include="GeometricObjects\Primitives\ConcaveSphere.h" />
     <ClInclude Include="GeometricObjects\Primitives\Disk.h" />
     <ClInclude Include="GeometricObjects\Primitives\OpenCylinder.h" />
     <ClInclude Include="GeometricObjects\Primitives\Plane.h" />
