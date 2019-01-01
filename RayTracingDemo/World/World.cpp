@@ -16,6 +16,10 @@
 #include "Rectangle.h"
 #include "Disk.h"
 
+#include "Triangles\Triangle.h"
+
+#include "Instance.h"
+
 // tracers
 
 #include "SingleSphere.h"
@@ -64,7 +68,7 @@
 #include "..\BuildShadedObjects.cpp"
 
 ofstream World::myfile{};
-int World::s_chapter_number = 18;
+int World::s_chapter_number = 19;
 int World::s_file_number = 5;
 
 int World::s_file_quality = 0;
@@ -74,101 +78,67 @@ string World::s_file_sample = "";
 void
 World::build(void) {
 	
-	int num_samples = 1;   		// for Figure 18.4(a)
-	//	int num_samples = 100;   	// for Figure 18.4(b) & (c)
-	s_file_quality = num_samples;//
+	int num_samples = 1;
+	s_file_quality = num_samples;
 
-	Sampler* sampler_ptr = new MultiJittered(num_samples);
-	s_file_sample = "MultiJittered";
+	vp.set_hres(400);
+	vp.set_vres(400);
+	vp.set_samples(num_samples);
+	s_file_sample = "Regular";
 
-	vp.set_hres(600);
-	vp.set_vres(600);
-	vp.set_sampler(sampler_ptr);
+	tracer_ptr = new RayCast(this);
 
-	background_color = RGBColor(0.5);
-
-	tracer_ptr = new AreaLighting(this);
-
-	Pinhole* camera = new Pinhole;
-	camera->set_eye(-20, 10, 20);
-	camera->set_lookat(0, 2, 0);
-	camera->set_view_distance(1080);
-	camera->compute_uvw();
-	set_camera(camera);
+	Pinhole* pinhole_ptr = new Pinhole;
+	pinhole_ptr->set_eye(25, 200, 100);
+	pinhole_ptr->set_lookat(-0.5, 0, 0);
+	pinhole_ptr->set_view_distance(8000);
+	pinhole_ptr->compute_uvw();
+	set_camera(pinhole_ptr);
 
 
-	Emissive* emissive_ptr = new Emissive;
-	emissive_ptr->scale_radiance(40.0);
-	emissive_ptr->set_ce(white);
+	PointLight* light_ptr1 = new PointLight;
+	light_ptr1->set_location(1, 5, 0);
+	light_ptr1->scale_radiance(3.0);
+	light_ptr1->set_shadows(true);
+	add_light(light_ptr1);
 
 
-	// define a rectangle for the rectangular light
-
-	Point3D center(0.0, 7.0, -7.0);
-	float width = 4.0;
-	float radius = 0.56 * width;
-	Normal normal(0, 0, 1);
-
-
-	Disk* disk_ptr = new Disk(center, normal, radius);
-	disk_ptr->set_material(emissive_ptr);
-	disk_ptr->set_sampler(sampler_ptr);
-	disk_ptr->set_shadows(false);
-	disk_ptr->compute_uvw();
-	add_object(disk_ptr);
-
-	
-	AreaLight* area_light_ptr = new AreaLight(*this);
-	area_light_ptr->set_object(disk_ptr);
-	area_light_ptr->set_shadows(true);
-	add_light(area_light_ptr);
-
-
-	// Four axis aligned boxes
-
-	float box_width = 1.0; 		// x dimension
-	float box_depth = 1.0; 		// z dimension
-	float box_height = 4.5; 		// y dimension
-	float gap = 3.0;
+	// yellow triangle
 
 	Matte* matte_ptr1 = new Matte;
 	matte_ptr1->set_ka(0.25);
 	matte_ptr1->set_kd(0.75);
-	matte_ptr1->set_cd(0.4, 0.7, 0.4);     // green
+	matte_ptr1->set_cd(1, 1, 0);
 
-	Box* box_ptr0 = new Box(Point3D(-1.5 * gap - 2.0 * box_width, 0.0, -0.5 * box_depth),
-		Point3D(-1.5 * gap - box_width, box_height, 0.5 * box_depth));
-	box_ptr0->set_material(matte_ptr1);
-	add_object(box_ptr0);
-
-	Box* box_ptr1 = new Box(Point3D(-0.5 * gap - box_width, 0.0, -0.5 * box_depth),
-		Point3D(-0.5 * gap, box_height, 0.5 * box_depth));
-	box_ptr1->set_material(matte_ptr1->clone());
-	add_object(box_ptr1);
-
-	Box* box_ptr2 = new Box(Point3D(0.5 * gap, 0.0, -0.5 * box_depth),
-		Point3D(0.5 * gap + box_width, box_height, 0.5 * box_depth));
-	box_ptr2->set_material(matte_ptr1->clone());
-	add_object(box_ptr2);
-
-	Box* box_ptr3 = new Box(Point3D(1.5 * gap + box_width, 0.0, -0.5 * box_depth),
-		Point3D(1.5 * gap + 2.0 * box_width, box_height, 0.5 * box_depth));
-	box_ptr3->set_material(matte_ptr1->clone());
-	add_object(box_ptr3);
+	Triangle* triangle_ptr1 = new Triangle(Point3D(2, 0.5, 5), Point3D(2, 1.5, -5), Point3D(-1, 0, -4));
+	triangle_ptr1->set_material(matte_ptr1);
+	add_object(triangle_ptr1);
 
 
-	// ground plane
+	// dark green triangle (transformed)
 
 	Matte* matte_ptr2 = new Matte;
-	matte_ptr2->set_ka(0.1);
-	matte_ptr2->set_kd(0.90);
-	matte_ptr2->set_cd(white);
+	matte_ptr2->set_ka(0.25);
+	matte_ptr2->set_kd(0.75);
+	matte_ptr2->set_cd(0.0, 0.5, 0.41);
 
-	Plane* plane_ptr = new Plane(Point3D(0.0), Normal(0, 1, 0));
-	plane_ptr->set_material(matte_ptr2);
-	add_object(plane_ptr);
+	Instance* triangle_ptr2 = new Instance(new Triangle(Point3D(2, 1, 5), Point3D(2, 0.5, -5), Point3D(-1, -1, -4)));
+	triangle_ptr2->rotate_y(120);
+	triangle_ptr2->set_material(matte_ptr2);
+	add_object(triangle_ptr2);
 
 
+	// brown triangle (transformed)
+
+	Matte* matte_ptr3 = new Matte;
+	matte_ptr3->set_ka(0.25);
+	matte_ptr3->set_kd(0.75);
+	matte_ptr3->set_cd(0.71, 0.40, 0.16);
+
+	Instance* triangle_ptr3 = new Instance(new Triangle(Point3D(2, 0, 5), Point3D(2, 1, -5), Point3D(-1, 0, -4)));
+	triangle_ptr3->rotate_y(240);
+	triangle_ptr3->set_material(matte_ptr3);
+	add_object(triangle_ptr3);
 
 }
 ///////////////////////////////////////////////
