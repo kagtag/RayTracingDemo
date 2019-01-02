@@ -52,6 +52,9 @@
     <Filter Include="GeometricObjects\CompoundObjects">
       <UniqueIdentifier>{8e002d14-f386-4b65-977e-e677c4e4fc5e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GeometricObjects\BeveledObjects">
+      <UniqueIdentifier>{c26cc6c0-1cf3-471d-bb01-88744fac6d7a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utilities\BBox.cpp">
@@ -243,6 +246,30 @@
     <ClCompile Include="GeometricObjects\Primitives\ConcaveSphere.cpp">
       <Filter>GeometricObjects\Primitives</Filter>
     </ClCompile>
+    <ClCompile Include="GeometricObjects\BeveledObjects\BeveledBox.cpp">
+      <Filter>GeometricObjects\BeveledObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometricObjects\BeveledObjects\BeveledCylinder.cpp">
+      <Filter>GeometricObjects\BeveledObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometricObjects\BeveledObjects\BeveledWedge.cpp">
+      <Filter>GeometricObjects\BeveledObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometricObjects\PartObjects\PartAnnulus.cpp">
+      <Filter>GeometricObjects\PartObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometricObjects\PartObjects\PartCylinder.cpp">
+      <Filter>GeometricObjects\PartObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometricObjects\PartObjects\ConcavePartCylinder.cpp">
+      <Filter>GeometricObjects\PartObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometricObjects\PartObjects\PartTorus.cpp">
+      <Filter>GeometricObjects\PartObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometricObjects\PartObjects\ConvexPartTorus.cpp">
+      <Filter>GeometricObjects\PartObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\BBox.h">
@@ -430,6 +457,30 @@
     </ClInclude>
     <ClInclude Include="GeometricObjects\Primitives\ConcaveSphere.h">
       <Filter>GeometricObjects\Primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\BeveledObjects\BeveledBox.h">
+      <Filter>GeometricObjects\BeveledObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\BeveledObjects\BeveledCylinder.h">
+      <Filter>GeometricObjects\BeveledObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\BeveledObjects\BeveledWedge.h">
+      <Filter>GeometricObjects\BeveledObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\PartObjects\PartAnnulus.h">
+      <Filter>GeometricObjects\PartObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\PartObjects\PartCylinder.h">
+      <Filter>GeometricObjects\PartObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\PartObjects\ConcavePartCylinder.h">
+      <Filter>GeometricObjects\PartObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\PartObjects\PartTorus.h">
+      <Filter>GeometricObjects\PartObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\PartObjects\ConvexPartTorus.h">
+      <Filter>GeometricObjects\PartObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

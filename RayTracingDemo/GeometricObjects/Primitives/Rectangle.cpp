@@ -173,6 +173,32 @@ Rectangle::hit(const Ray& ray, double& tmin, ShadeRec& sr) const {
 }
 
 
+bool
+Rectangle::shadow_hit(const Ray& ray, double& tmin)const
+{
+	double t = (p0 - ray.o) * normal / (ray.d * normal);
+
+	if (t <= kEpsilon)
+		return (false);
+
+	Point3D p = ray.o + t * ray.d;
+	Vector3D d = p - p0;
+
+	double ddota = d * a;
+
+	if (ddota < 0.0 || ddota > a_len_squared)
+		return (false);
+
+	double ddotb = d * b;
+
+	if (ddotb < 0.0 || ddotb > b_len_squared)
+		return (false);
+
+	tmin = t;
+
+	return (true);
+}
+
 // ---------------------------------------------------------------- setSampler
 
 void 								

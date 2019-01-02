@@ -28,3 +28,12 @@ SolidCylinder::hit(const Ray& ray, double tmin, ShadeRec& sr)const
 	else
 		return false;
 }
+
+//bool
+//SolidCylinder::shadow_hit(const Ray& ray, double& tmin)const
+//{
+//	if (bbox.hit(ray))
+//		return (Compound::shadow_hit(ray, tmin));
+//	else
+//		return false;
+//}

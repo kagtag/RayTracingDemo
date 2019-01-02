@@ -75,7 +75,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;;Cameras\;;Lights\;;BRDFs\;Materials\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -83,7 +83,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>;Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;Cameras\;;Lights\;;BRDFs\;Materials\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -93,7 +93,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;;Cameras\;;Lights\;;BRDFs\;Materials\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -107,7 +107,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>;Utilities\;;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;;Samplers\;Cameras\;;Lights\;;BRDFs\;Materials\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -124,12 +124,20 @@
     <ClCompile Include="Cameras\Pinhole.cpp" />
     <ClCompile Include="Cameras\Spherical.cpp" />
     <ClCompile Include="Cameras\ThinLens.cpp" />
+    <ClCompile Include="GeometricObjects\BeveledObjects\BeveledBox.cpp" />
+    <ClCompile Include="GeometricObjects\BeveledObjects\BeveledCylinder.cpp" />
+    <ClCompile Include="GeometricObjects\BeveledObjects\BeveledWedge.cpp" />
     <ClCompile Include="GeometricObjects\CompoundObjects\Compound.cpp" />
     <ClCompile Include="GeometricObjects\CompoundObjects\SolidCylinder.cpp" />
     <ClCompile Include="GeometricObjects\GeometricObject.cpp" />
     <ClCompile Include="GeometricObjects\Instance.cpp" />
+    <ClCompile Include="GeometricObjects\PartObjects\ConcavePartCylinder.cpp" />
     <ClCompile Include="GeometricObjects\PartObjects\ConvexPartCylinder.cpp" />
     <ClCompile Include="GeometricObjects\PartObjects\ConvexPartSphere.cpp" />
+    <ClCompile Include="GeometricObjects\PartObjects\ConvexPartTorus.cpp" />
+    <ClCompile Include="GeometricObjects\PartObjects\PartAnnulus.cpp" />
+    <ClCompile Include="GeometricObjects\PartObjects\PartCylinder.cpp" />
+    <ClCompile Include="GeometricObjects\PartObjects\PartTorus.cpp" />
     <ClCompile Include="GeometricObjects\Primitives\Box.cpp" />
     <ClCompile Include="GeometricObjects\Primitives\ConcaveSphere.cpp" />
     <ClCompile Include="GeometricObjects\Primitives\Disk.cpp" />
@@ -194,12 +202,20 @@
     <ClInclude Include="Cameras\Pinhole.h" />
     <ClInclude Include="Cameras\Spherical.h" />
     <ClInclude Include="Cameras\ThinLens.h" />
+    <ClInclude Include="GeometricObjects\BeveledObjects\BeveledBox.h" />
+    <ClInclude Include="GeometricObjects\BeveledObjects\BeveledCylinder.h" />
+    <ClInclude Include="GeometricObjects\BeveledObjects\BeveledWedge.h" />
     <ClInclude Include="GeometricObjects\CompoundObjects\Compound.h" />
     <ClInclude Include="GeometricObjects\CompoundObjects\SolidCylinder.h" />
     <ClInclude Include="GeometricObjects\GeometricObject.h" />
     <ClInclude Include="GeometricObjects\Instance.h" />
+    <ClInclude Include="GeometricObjects\PartObjects\ConcavePartCylinder.h" />
     <ClInclude Include="GeometricObjects\PartObjects\ConvexPartCylinder.h" />
     <ClInclude Include="GeometricObjects\PartObjects\ConvexPartSphere.h" />
+    <ClInclude Include="GeometricObjects\PartObjects\ConvexPartTorus.h" />
+    <ClInclude Include="GeometricObjects\PartObjects\PartAnnulus.h" />
+    <ClInclude Include="GeometricObjects\PartObjects\PartCylinder.h" />
+    <ClInclude Include="GeometricObjects\PartObjects\PartTorus.h" />
     <ClInclude Include="GeometricObjects\Primitives\Box.h" />
     <ClInclude Include="GeometricObjects\Primitives\ConcaveSphere.h" />
     <ClInclude Include="GeometricObjects\Primitives\Disk.h" />

@@ -1,13 +1,13 @@
-#include "ConvexPartCylinder.h"
+#include "ConcavePartCylinder.h"
 
-ConvexPartCylinder::ConvexPartCylinder(const double bottom, const double top, const double radius,
+ConcavePartCylinder::ConcavePartCylinder(const double bottom, const double top, const double radius,
 	const double azimuth_min,
 	const double azimuth_max)
-	:PartCylinder(bottom,top,radius, azimuth_min, azimuth_max)
+	:PartCylinder(bottom, top, radius, azimuth_min, azimuth_max)
 {}
 
 bool
-ConvexPartCylinder::hit(const Ray& ray, double& tmin, ShadeRec& sr) const {
+ConcavePartCylinder::hit(const Ray& ray, double& tmin, ShadeRec& sr) const {
 
 	double t;
 	double ox = ray.o.x;
@@ -49,7 +49,7 @@ ConvexPartCylinder::hit(const Ray& ray, double& tmin, ShadeRec& sr) const {
 					// test for hitting from inside
 
 					//if (-ray.d * sr.normal < 0.0)
-					//	sr.normal = -sr.normal;
+					sr.normal = -sr.normal;
 
 					sr.local_hit_point = ray.o + tmin * ray.d;
 
@@ -80,7 +80,7 @@ ConvexPartCylinder::hit(const Ray& ray, double& tmin, ShadeRec& sr) const {
 					// test for hitting inside surface
 
 					//if (-ray.d * sr.normal < 0.0)
-					//	sr.normal = -sr.normal;
+					sr.normal = -sr.normal;
 
 					sr.local_hit_point = ray.o + tmin * ray.d;
 

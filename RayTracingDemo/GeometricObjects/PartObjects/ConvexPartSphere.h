@@ -20,10 +20,10 @@ class ConvexPartSphere: public GeometricObject {
 	
 		Point3D 	center;   			// center coordinates 
 		double 		radius;				// sphere radius 
-		double 		phi_min;			// minimum azimiuth angle in degrees measured counter clockwise from the +ve z axis
-		double 		phi_max;			// maximum azimiuth angle in degrees measured counter clockwise from the +ve z axis
-		double 		theta_min;			// minimum polar angle in degrees measured down from the +ve y axis
-		double 		theta_max;			// maximum polar angle in degrees measured down from the +ve y axis
+		double 		phi_min;			// minimum azimiuth angle in radians measured counter clockwise from the +ve z axis
+		double 		phi_max;			// maximum azimiuth angle in radians measured counter clockwise from the +ve z axis
+		double 		theta_min;			// minimum polar angle in radians measured down from the +ve y axis
+		double 		theta_max;			// maximum polar angle in radians measured down from the +ve y axis
 		
 		double		cos_theta_min;		// stored to avoid repeated calculations
 		double		cos_theta_max;		// stored to avoid repeated calculations

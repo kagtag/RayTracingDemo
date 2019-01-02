@@ -146,7 +146,7 @@ Compound::shadow_hit(const Ray& ray, double& tmin) const
 	for (int j = 0; j < num_objects; j++)
 		if (objects[j]->shadow_hit(ray, t) && (t < tmin)) {
 			//hit = true;
-			//tmin = t;
+			tmin = t;
 			return true; // shadowed by one of the object 
 		}
 

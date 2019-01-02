@@ -36,6 +36,8 @@ class Rectangle: public GeometricObject {
 		virtual bool 												 
 		hit(const Ray& ray, double& t, ShadeRec& s) const;	
 				
+		virtual bool
+			shadow_hit(const Ray& ray, double& tmin)const;
 		
 		// the following functions are used when the rectangle is a light source
 		

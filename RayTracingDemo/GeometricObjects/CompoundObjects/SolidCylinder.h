@@ -14,6 +14,9 @@ public:
 	virtual bool
 		hit(const Ray& ray, double tmin, ShadeRec& sr)const;
 
+	//virtual bool
+	//	shadow_hit(const Ray& ray, double& tmin)const;
+
 	// TODO
 	//void set_top_material(Material* mat_ptr);
 	//void set_bottom_material(Material* mat_ptr);
