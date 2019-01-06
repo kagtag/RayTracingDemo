@@ -270,6 +270,21 @@
     <ClCompile Include="GeometricObjects\PartObjects\ConvexPartTorus.cpp">
       <Filter>GeometricObjects\PartObjects</Filter>
     </ClCompile>
+    <ClCompile Include="GeometricObjects\CompoundObjects\Grid.cpp">
+      <Filter>GeometricObjects\CompoundObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometricObjects\Triangles\FlatMeshTriangle.cpp">
+      <Filter>GeometricObjects\Triangles</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometricObjects\Triangles\MeshTriangle.cpp">
+      <Filter>GeometricObjects\Triangles</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometricObjects\Triangles\SmoothMeshTriangle.cpp">
+      <Filter>GeometricObjects\Triangles</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometricObjects\Triangles\SmoothTriangle.cpp">
+      <Filter>GeometricObjects\Triangles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\BBox.h">
@@ -481,6 +496,21 @@
     </ClInclude>
     <ClInclude Include="GeometricObjects\PartObjects\ConvexPartTorus.h">
       <Filter>GeometricObjects\PartObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\CompoundObjects\Grid.h">
+      <Filter>GeometricObjects\CompoundObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\Triangles\FlatMeshTriangle.h">
+      <Filter>GeometricObjects\Triangles</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\Triangles\MeshTriangle.h">
+      <Filter>GeometricObjects\Triangles</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\Triangles\SmoothMeshTriangle.h">
+      <Filter>GeometricObjects\Triangles</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\Triangles\SmoothTriangle.h">
+      <Filter>GeometricObjects\Triangles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

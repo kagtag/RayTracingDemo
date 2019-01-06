@@ -31,8 +31,9 @@ EXPRESS, IMPLIED OR OTHERWISE, INCLUDING WITHOUT LIMITATION, ANY
 WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.   
 
 */
-
-#include <iostream>
+#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_DEPRECATE
+//#include <iostream>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -163,7 +164,7 @@ PlyFile *ply_write(
   for (i = 0; i < nelems; i++) {
     elem = (PlyElement *) myalloc (sizeof (PlyElement));
     plyfile->elems[i] = elem;
-   	elem->name = (char* )strdup (elem_names[i]);         /* added (char* ) cast 3/2/2005 */  
+   	elem->name = (char* )_strdup (elem_names[i]);         /* added (char* ) cast 3/2/2005 */  
     elem->num = 0;
     elem->nprops = 0;
   }
@@ -642,7 +643,7 @@ void ply_put_comment(PlyFile *plyfile, char *comment)
                          sizeof (char *) * (plyfile->num_comments + 1));
 
   /* add comment to list */
-  plyfile->comments[plyfile->num_comments] = (char* )strdup (comment);   /* added (char* ) cast 3/2/2005 */ 
+  plyfile->comments[plyfile->num_comments] = (char* )_strdup (comment);   /* added (char* ) cast 3/2/2005 */ 
   plyfile->num_comments++;
 }
 
@@ -666,7 +667,7 @@ void ply_put_obj_info(PlyFile *plyfile, char *obj_info)
                          sizeof (char *) * (plyfile->num_obj_info + 1));
 
   /* add info to list */
-  plyfile->obj_info[plyfile->num_obj_info] = (char* )strdup (obj_info);  /* added (char* ) cast 3/2/2005 */ 
+  plyfile->obj_info[plyfile->num_obj_info] = (char* )_strdup (obj_info);  /* added (char* ) cast 3/2/2005 */ 
   plyfile->num_obj_info++;
 }
 
@@ -782,8 +783,8 @@ PlyFile *ply_read(FILE *fp, int *nelems, char ***elem_names)
 
   elist = (char **) myalloc (sizeof (char *) * plyfile->nelems);
   for (i = 0; i < plyfile->nelems; i++)
-//    elist[i] = (char* )strdup (plyfile->elems[i]->name);   /* added (char* ) cast 3/2/2005 */ 
-    elist[i] = strdup (plyfile->elems[i]->name);   /* added (char* ) cast 3/2/2005 */ 
+//    elist[i] = (char* )_strdup (plyfile->elems[i]->name);   /* added (char* ) cast 3/2/2005 */ 
+    elist[i] = _strdup (plyfile->elems[i]->name);   /* added (char* ) cast 3/2/2005 */ 
 
   *elem_names = elist;
   *nelems = plyfile->nelems;
@@ -1158,7 +1159,7 @@ PlyOtherProp *ply_get_other_properties(
 
   /* create structure for describing other_props */
   other = (PlyOtherProp *) myalloc (sizeof (PlyOtherProp));
-  other->name = (char* )strdup (elem_name);    /* added (char* ) cast 3/2/2005 */ 
+  other->name = (char* )_strdup (elem_name);    /* added (char* ) cast 3/2/2005 */ 
 #if 0
   if (elem->other_offset == NO_OTHER_PROPS) {
     other->size = 0;
@@ -1258,7 +1259,7 @@ PlyOtherElems *ply_get_other_element (
   other->elem_count = elem_count;
 
   /* save name of element */
-  other->elem_name = (char* ) strdup (elem_name);  /* added (char* ) cast 3/2/2005 */ 
+  other->elem_name = (char* ) _strdup (elem_name);  /* added (char* ) cast 3/2/2005 */ 
 
   /* create a list to hold all the current elements */
   other->other_data = (OtherData **)
@@ -1266,7 +1267,7 @@ PlyOtherElems *ply_get_other_element (
 
   /* set up for getting elements */
   other->other_props = ply_get_other_properties (plyfile, elem_name,
-                         offsetof(OtherData,other_props));
+                         /*offsetof(OtherData,other_props)*/0);
 
   /* grab all these elements */
   for (i = 0; i < other->elem_count; i++) {
@@ -1310,7 +1311,7 @@ void ply_describe_other_elements (
     other = &(other_elems->other_list[i]);
     ply_element_count (plyfile, other->elem_name, other->elem_count);
     ply_describe_other_properties (plyfile, other->other_props,
-                                   offsetof(OtherData,other_props));
+                                   /*offsetof(OtherData,other_props)*/0);
   }
 }
 
@@ -1488,7 +1489,7 @@ void ascii_get_element(PlyFile *plyfile, char *elem_ptr)
   int nwords;
   int which_word;
   FILE *fp = plyfile->fp;
-  char *elem_data,*item;
+  char *elem_data,*item=NULL;
   char *item_ptr;
   int item_size;
   int int_val;
@@ -1498,7 +1499,7 @@ void ascii_get_element(PlyFile *plyfile, char *elem_ptr)
   int store_it;
   char **store_array;
   char *orig_line;
-  char *other_data;
+  char *other_data = NULL;
   int other_flag;
 
   /* the kind of element we're reading currently */
@@ -1607,7 +1608,7 @@ void binary_get_element(PlyFile *plyfile, char *elem_ptr)
   PlyElement *elem;
   PlyProperty *prop;
   FILE *fp = plyfile->fp;
-  char *elem_data,*item;
+  char *elem_data,*item=NULL;
   char *item_ptr;
   int item_size;
   int int_val;
@@ -1616,7 +1617,7 @@ void binary_get_element(PlyFile *plyfile, char *elem_ptr)
   int list_count;
   int store_it;
   char **store_array;
-  char *other_data;
+  char *other_data=NULL;
   int other_flag;
 
   /* the kind of element we're reading currently */
@@ -2353,7 +2354,7 @@ void add_element (PlyFile *plyfile, char **words, int nwords)
 
   /* create the new element */
   elem = (PlyElement *) myalloc (sizeof (PlyElement));
-  elem->name = (char* ) strdup (words[1]);  /* added (char* ) cast 3/2/2005 */ 
+  elem->name = (char* ) _strdup (words[1]);  /* added (char* ) cast 3/2/2005 */ 
   elem->num = atoi (words[2]);
   elem->nprops = 0;
 
@@ -2416,12 +2417,12 @@ void add_property (PlyFile *plyfile, char **words, int nwords)
   if (equal_strings (words[1], "list")) {       /* is a list */
     prop->count_external = get_prop_type (words[2]);
     prop->external_type = get_prop_type (words[3]);
-    prop->name = (char* ) strdup (words[4]);  /* added (char* ) cast 3/2/2005 */ 
+    prop->name = (char* ) _strdup (words[4]);  /* added (char* ) cast 3/2/2005 */ 
     prop->is_list = 1;
   }
   else {                                        /* not a list */
     prop->external_type = get_prop_type (words[1]);
-    prop->name = (char* ) strdup (words[2]);  /* added (char* ) cast 3/2/2005 */ 
+    prop->name = (char* ) _strdup (words[2]);  /* added (char* ) cast 3/2/2005 */ 
     prop->is_list = 0;
   }
 
@@ -2488,7 +2489,7 @@ Copy a property.
 
 void copy_property(PlyProperty *dest, PlyProperty *src)
 {
-  dest->name = (char* ) strdup (src->name);
+  dest->name = (char* ) _strdup (src->name);
   dest->external_type = src->external_type;
   dest->internal_type = src->internal_type;
   dest->offset = src->offset;
@@ -2524,7 +2525,7 @@ static char *my_alloc(int size, int lnum, char *fname)
 
 
 
-/* strdup.c -- String duplicate function
+/* _strdup.c -- String duplicate function
  * Created: Mon Nov  7 10:23:32 1994 by faith@dict.org
  * Revised: Sat Mar 30 12:08:35 2002 by faith@dict.org
  * Copyright 1994-1996, 2002 Rickard E. Faith (faith@dict.org)
@@ -2543,13 +2544,13 @@ static char *my_alloc(int size, int lnum, char *fname)
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  * 
- * $Id: strdup.c,v 1.6 2002/08/02 19:43:15 faith Exp $
+ * $Id: _strdup.c,v 1.6 2002/08/02 19:43:15 faith Exp $
  *
  */
 
 
 char* 
-strdup(const char* s) {
+_strdup(const char* s) {
    int   	len = strlen(s);
    char*	r;
 

@@ -75,7 +75,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\;GeometricObjects\Triangles\</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -83,7 +83,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\;GeometricObjects\Triangles\</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -93,7 +93,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\;GeometricObjects\Triangles\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -107,7 +107,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\;GeometricObjects\Triangles\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -128,6 +128,7 @@
     <ClCompile Include="GeometricObjects\BeveledObjects\BeveledCylinder.cpp" />
     <ClCompile Include="GeometricObjects\BeveledObjects\BeveledWedge.cpp" />
     <ClCompile Include="GeometricObjects\CompoundObjects\Compound.cpp" />
+    <ClCompile Include="GeometricObjects\CompoundObjects\Grid.cpp" />
     <ClCompile Include="GeometricObjects\CompoundObjects\SolidCylinder.cpp" />
     <ClCompile Include="GeometricObjects\GeometricObject.cpp" />
     <ClCompile Include="GeometricObjects\Instance.cpp" />
@@ -147,6 +148,10 @@
     <ClCompile Include="GeometricObjects\Primitives\Sphere.cpp" />
     <ClCompile Include="BuildShadedObjects.cpp" />
     <ClCompile Include="GeometricObjects\Primitives\Torus.cpp" />
+    <ClCompile Include="GeometricObjects\Triangles\FlatMeshTriangle.cpp" />
+    <ClCompile Include="GeometricObjects\Triangles\MeshTriangle.cpp" />
+    <ClCompile Include="GeometricObjects\Triangles\SmoothMeshTriangle.cpp" />
+    <ClCompile Include="GeometricObjects\Triangles\SmoothTriangle.cpp" />
     <ClCompile Include="GeometricObjects\Triangles\Triangle.cpp" />
     <ClCompile Include="Lights\Ambient.cpp" />
     <ClCompile Include="Lights\AmbientOccluder.cpp" />
@@ -177,12 +182,7 @@
     <ClCompile Include="Utilities\Matrix.cpp" />
     <ClCompile Include="Utilities\Mesh.cpp" />
     <ClCompile Include="Utilities\Normal.cpp" />
-    <ClCompile Include="Utilities\ply.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="Utilities\ply.c" />
     <ClCompile Include="Utilities\Point2D.cpp" />
     <ClCompile Include="Utilities\Point3D.cpp" />
     <ClCompile Include="Utilities\Ray.cpp" />
@@ -206,6 +206,7 @@
     <ClInclude Include="GeometricObjects\BeveledObjects\BeveledCylinder.h" />
     <ClInclude Include="GeometricObjects\BeveledObjects\BeveledWedge.h" />
     <ClInclude Include="GeometricObjects\CompoundObjects\Compound.h" />
+    <ClInclude Include="GeometricObjects\CompoundObjects\Grid.h" />
     <ClInclude Include="GeometricObjects\CompoundObjects\SolidCylinder.h" />
     <ClInclude Include="GeometricObjects\GeometricObject.h" />
     <ClInclude Include="GeometricObjects\Instance.h" />
@@ -224,6 +225,10 @@
     <ClInclude Include="GeometricObjects\Primitives\Rectangle.h" />
     <ClInclude Include="GeometricObjects\Primitives\Sphere.h" />
     <ClInclude Include="GeometricObjects\Primitives\Torus.h" />
+    <ClInclude Include="GeometricObjects\Triangles\FlatMeshTriangle.h" />
+    <ClInclude Include="GeometricObjects\Triangles\MeshTriangle.h" />
+    <ClInclude Include="GeometricObjects\Triangles\SmoothMeshTriangle.h" />
+    <ClInclude Include="GeometricObjects\Triangles\SmoothTriangle.h" />
     <ClInclude Include="GeometricObjects\Triangles\Triangle.h" />
     <ClInclude Include="Lights\Ambient.h" />
     <ClInclude Include="Lights\AmbientOccluder.h" />
@@ -254,12 +259,7 @@
     <ClInclude Include="Utilities\Matrix.h" />
     <ClInclude Include="Utilities\Mesh.h" />
     <ClInclude Include="Utilities\Normal.h" />
-    <ClInclude Include="Utilities\ply.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="Utilities\ply.h" />
     <ClInclude Include="Utilities\Point2D.h" />
     <ClInclude Include="Utilities\Point3D.h" />
     <ClInclude Include="Utilities\Ray.h" />

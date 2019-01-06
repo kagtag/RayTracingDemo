@@ -26,6 +26,8 @@
 
 #include "BeveledObjects\BeveledCylinder.h"
 #include "BeveledObjects\BeveledBox.h"
+#include "BeveledObjects\BeveledWedge.h"
+#include "Grid.h"
 
 // tracers
 
@@ -76,9 +78,9 @@
 #include "..\BuildShadedObjects.cpp"
 
 ofstream World::myfile{};
-int World::s_chapter_number = 21;
+int World::s_chapter_number = 23;
 int World::s_file_number = 7;
-string World::s_file_tag = "";
+string World::s_file_tag = "a";
 
 int World::s_file_quality = 0;
 string World::s_file_sample = "MultiJittered";
@@ -86,89 +88,51 @@ string World::s_file_sample = "MultiJittered";
 
 void
 World::build(void) {
-	int num_samples = 4;
-
-	vp.set_hres(600);
-	vp.set_vres(280);
-	vp.set_samples(num_samples);
+	
+	int num_samples = 16;
 	s_file_quality = num_samples;
+	vp.set_hres(400);
+	vp.set_vres(400);
+	vp.set_samples(num_samples);
 
 	tracer_ptr = new RayCast(this);
 
+	background_color = black;
+
 	Pinhole* pinhole_ptr = new Pinhole;
-	pinhole_ptr->set_eye(10, 15, 50);
-	pinhole_ptr->set_lookat(0, 0.75, 0);
-	pinhole_ptr->set_view_distance(4000);
+	pinhole_ptr->set_eye(100, 50, 90);
+	pinhole_ptr->set_lookat(0, -0.5, 0);
+	pinhole_ptr->set_view_distance(16000);
 	pinhole_ptr->compute_uvw();
 	set_camera(pinhole_ptr);
 
-	PointLight* light_ptr1 = new PointLight;
-	light_ptr1->set_location(10, 15, 20);
-	light_ptr1->scale_radiance(3.0);
-	light_ptr1->set_shadows(true);
-	add_light(light_ptr1);
+	Directional* directional_ptr = new Directional;
+	directional_ptr->set_direction(0.75, 1, -0.15);
+	directional_ptr->scale_radiance(4.5);
+	directional_ptr->set_shadows(true);
+	add_light(directional_ptr);
 
-	Phong* phong_ptr = new Phong;
-	phong_ptr->set_ka(0.3);
-	phong_ptr->set_kd(0.75);
-	phong_ptr->set_cd(0.7, 0.5, 0);		// orange
-	phong_ptr->set_ks(0.2);
-	phong_ptr->set_exp(3);
+	Matte* matte_ptr1 = new Matte;
+	matte_ptr1->set_ka(0.1);
+	matte_ptr1->set_kd(0.75);
+	matte_ptr1->set_cd(0.1, 0.5, 1.0);
 
-	float bevel_radius = 0.05;  // for all objects
+	char* file_name = "TwoTriangles.ply";
+	Grid* grid_ptr = new Grid(new Mesh);
+	grid_ptr->read_flat_triangles(file_name);		// for Figure 23.7(a)
+													//	grid_ptr->read_smooth_triangles(file_name);		// for Figure 23.7(b)
+	grid_ptr->set_material(matte_ptr1);
+	grid_ptr->setup_cells();
+	add_object(grid_ptr);
 
-								// cylinder
+	Matte* matte_ptr2 = new Matte;
+	matte_ptr2->set_cd(1, 0.9, 0.6);
+	matte_ptr2->set_ka(0.25);
+	matte_ptr2->set_kd(0.4);
 
-	float y0 = -0.75;
-	float y1 = 1.25;
-	float radius = 1.0;
-
-	Instance* cylinder_ptr = new Instance(new SolidCylinder(y0, y1, radius));
-		//new Instance(new BeveledCylinder(y0, y1, radius, bevel_radius));
-	cylinder_ptr->translate(-2.75, 0, 0);
-	cylinder_ptr->set_material(phong_ptr);
-	add_object(cylinder_ptr);
-
-	// thick ring
-
-	y0 = -0.125;
-	y1 = 0.125;
-	float inner_radius = 0.75;
-	float outer_radius = 1.6;
-
-	//Instance* ring_ptr = new Instance(new BeveledRing(y0, y1, inner_radius, outer_radius, bevel_radius));
-	//ring_ptr->rotate_x(90);
-	//ring_ptr->rotate_y(-30);
-	//ring_ptr->translate(0.0, 0.85, 0.5);
-	//ring_ptr->set_material(phong_ptr);
-	//add_object(ring_ptr);
-
-	// box
-	// the untransformed box is centered on the origin
-
-	Point3D p0(-0.75, -1.125, -0.75);
-	Point3D p1(0.75, 1.125, 0.75);
-
-	Instance* box_ptr = new Instance(new BeveledBox(p0, p1, bevel_radius));
-	box_ptr->rotate_y(-10);
-	box_ptr->translate(2.5, 0.38, -1);
-	box_ptr->set_material(phong_ptr);
-	add_object(box_ptr);
-
-	// ground plane
-
-	Matte* matte_ptr = new Matte;
-	matte_ptr->set_ka(0.5);
-	matte_ptr->set_kd(0.85);
-	matte_ptr->set_cd(0.25);
-
-	Plane* plane_ptr = new Plane(Point3D(0, -0.75, 0), Normal(0, 1, 0));
-	plane_ptr->set_material(matte_ptr);
-	add_object(plane_ptr);
-	
-
-	add_material(phong_ptr);
-	add_material(matte_ptr);
+	Plane* plane_ptr1 = new Plane(Point3D(0, -2.0, 0), Normal(0, 1, 0));
+	plane_ptr1->set_material(matte_ptr2);
+	add_object(plane_ptr1);
 }
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
