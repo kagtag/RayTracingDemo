@@ -164,6 +164,7 @@
     <ClCompile Include="Materials\Material.cpp" />
     <ClCompile Include="Materials\Matte.cpp" />
     <ClCompile Include="Materials\Phong.cpp" />
+    <ClCompile Include="Materials\Reflective.cpp" />
     <ClCompile Include="Samplers\Hammersley.cpp" />
     <ClCompile Include="Samplers\Jittered.cpp" />
     <ClCompile Include="Samplers\MultiJittered.cpp" />
@@ -177,6 +178,7 @@
     <ClCompile Include="Tracers\RayCast.cpp" />
     <ClCompile Include="Tracers\SingleSphere.cpp" />
     <ClCompile Include="Tracers\Tracer.cpp" />
+    <ClCompile Include="Tracers\Whitted.cpp" />
     <ClCompile Include="Utilities\BBox.cpp" />
     <ClCompile Include="Utilities\Maths.cpp" />
     <ClCompile Include="Utilities\Matrix.cpp" />
@@ -241,6 +243,7 @@
     <ClInclude Include="Materials\Material.h" />
     <ClInclude Include="Materials\Matte.h" />
     <ClInclude Include="Materials\Phong.h" />
+    <ClInclude Include="Materials\Reflective.h" />
     <ClInclude Include="Samplers\Hammersley.h" />
     <ClInclude Include="Samplers\Jittered.h" />
     <ClInclude Include="Samplers\MultiJittered.h" />
@@ -253,6 +256,7 @@
     <ClInclude Include="Tracers\RayCast.h" />
     <ClInclude Include="Tracers\SingleSphere.h" />
     <ClInclude Include="Tracers\Tracer.h" />
+    <ClInclude Include="Tracers\Whitted.h" />
     <ClInclude Include="Utilities\BBox.h" />
     <ClInclude Include="Utilities\Constants.h" />
     <ClInclude Include="Utilities\Maths.h" />

@@ -59,6 +59,9 @@ public:
 	virtual RGBColor
 		shade(ShadeRec& s);
 
+	virtual RGBColor
+		area_light_shade(ShadeRec& sr);
+
 protected:
 
 	Lambertian* ambient_brdf;

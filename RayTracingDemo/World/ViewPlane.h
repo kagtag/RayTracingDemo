@@ -16,6 +16,8 @@ class ViewPlane {
 		bool			show_out_of_gamut;			// display red if RGBColor out of gamut
 		
 		Sampler*		sampler_ptr;
+
+		int				max_depth;					// maximum number of bounces
 	
 	public:
 	
@@ -49,6 +51,9 @@ class ViewPlane {
 		void set_sampler(Sampler* sp);
 
 		void set_samples(const int n);
+
+		//reflection
+		void set_max_depth(const int depth);
 };
 
 
@@ -101,5 +106,11 @@ ViewPlane::set_gamut_display(const bool show) {
 //ViewPlane::set_samples(const int n) {
 //	num_samples = n;
 //}
+
+inline void 
+ViewPlane::set_max_depth(const int depth)
+{
+	max_depth = depth;
+}
 
 #endif

@@ -285,6 +285,12 @@
     <ClCompile Include="GeometricObjects\Triangles\SmoothTriangle.cpp">
       <Filter>GeometricObjects\Triangles</Filter>
     </ClCompile>
+    <ClCompile Include="Tracers\Whitted.cpp">
+      <Filter>Tracers</Filter>
+    </ClCompile>
+    <ClCompile Include="Materials\Reflective.cpp">
+      <Filter>Materials</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\BBox.h">
@@ -511,6 +517,12 @@
     </ClInclude>
     <ClInclude Include="GeometricObjects\Triangles\SmoothTriangle.h">
       <Filter>GeometricObjects\Triangles</Filter>
+    </ClInclude>
+    <ClInclude Include="Tracers\Whitted.h">
+      <Filter>Tracers</Filter>
+    </ClInclude>
+    <ClInclude Include="Materials\Reflective.h">
+      <Filter>Materials</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
