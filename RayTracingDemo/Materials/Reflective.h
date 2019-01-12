@@ -43,6 +43,9 @@ class Reflective: public Phong {
 		//for area lighting. 24.2.1
 		virtual RGBColor
 			area_light_shade(ShadeRec& sr);
+
+		virtual RGBColor path_shade(ShadeRec& sr);
+
 		
 	private:
 	

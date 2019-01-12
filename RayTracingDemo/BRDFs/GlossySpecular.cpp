@@ -88,9 +88,9 @@ GlossySpecular::sample_f(const ShadeRec& sr, const Vector3D& wo, Vector3D& wi, f
 		wi = -sp.x * u - sp.y * v + sp.z * w;
 
 	float phong_lobe = pow(r * wi, exp);
-	pdf = phong_lobe * (sr.normal * wi);
+	pdf = phong_lobe * (sr.normal * wi); //eq 25.6 without c
 
-	return (ks * cs * phong_lobe);
+	return (ks * cs * phong_lobe); //eq 25.2 without c
 }
 
 

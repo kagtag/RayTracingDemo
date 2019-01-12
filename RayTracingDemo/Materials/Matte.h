@@ -50,6 +50,11 @@ class Matte: public Material {
 		virtual RGBColor
 			area_light_shade(ShadeRec& sr);
 		
+		virtual RGBColor path_shade(ShadeRec& sr);
+
+		// For Figuire 26.7
+		void set_sampler(Sampler* sampler);
+
 	private:
 		
 		// ka and kd can be different.
@@ -101,6 +106,13 @@ inline void
 Matte::set_cd(const float c) {
 	ambient_brdf->set_cd(c);
 	diffuse_brdf->set_cd(c);
+}
+
+inline void 
+Matte::set_sampler(Sampler* sampler)
+{
+	ambient_brdf->set_sampler(sampler);
+	diffuse_brdf->set_sampler(sampler->clone());// ????
 }
 
 #endif

@@ -291,6 +291,12 @@
     <ClCompile Include="Materials\Reflective.cpp">
       <Filter>Materials</Filter>
     </ClCompile>
+    <ClCompile Include="Materials\GlossyReflector.cpp">
+      <Filter>Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="Tracers\PathTrace.cpp">
+      <Filter>Tracers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\BBox.h">
@@ -523,6 +529,12 @@
     </ClInclude>
     <ClInclude Include="Materials\Reflective.h">
       <Filter>Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="Materials\GlossyReflector.h">
+      <Filter>Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="Tracers\PathTrace.h">
+      <Filter>Tracers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

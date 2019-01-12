@@ -107,4 +107,4 @@ Lambertian::set_cd(const float c) {
 }
 
 #endif
-
+

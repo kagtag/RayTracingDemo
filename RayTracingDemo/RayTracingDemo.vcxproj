@@ -161,6 +161,7 @@
     <ClCompile Include="Lights\Light.cpp" />
     <ClCompile Include="Lights\PointLight.cpp" />
     <ClCompile Include="Materials\Emissive.cpp" />
+    <ClCompile Include="Materials\GlossyReflector.cpp" />
     <ClCompile Include="Materials\Material.cpp" />
     <ClCompile Include="Materials\Matte.cpp" />
     <ClCompile Include="Materials\Phong.cpp" />
@@ -175,6 +176,7 @@
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Tracers\AreaLighting.cpp" />
     <ClCompile Include="Tracers\MultipleObjects.cpp" />
+    <ClCompile Include="Tracers\PathTrace.cpp" />
     <ClCompile Include="Tracers\RayCast.cpp" />
     <ClCompile Include="Tracers\SingleSphere.cpp" />
     <ClCompile Include="Tracers\Tracer.cpp" />
@@ -240,6 +242,7 @@
     <ClInclude Include="Lights\Light.h" />
     <ClInclude Include="Lights\PointLight.h" />
     <ClInclude Include="Materials\Emissive.h" />
+    <ClInclude Include="Materials\GlossyReflector.h" />
     <ClInclude Include="Materials\Material.h" />
     <ClInclude Include="Materials\Matte.h" />
     <ClInclude Include="Materials\Phong.h" />
@@ -253,6 +256,7 @@
     <ClInclude Include="Samplers\Sampler.h" />
     <ClInclude Include="Tracers\AreaLighting.h" />
     <ClInclude Include="Tracers\MultipleObjects.h" />
+    <ClInclude Include="Tracers\PathTrace.h" />
     <ClInclude Include="Tracers\RayCast.h" />
     <ClInclude Include="Tracers\SingleSphere.h" />
     <ClInclude Include="Tracers\Tracer.h" />
