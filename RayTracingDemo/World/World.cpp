@@ -90,7 +90,7 @@
 ofstream World::myfile{};
 int World::s_chapter_number = 26;
 int World::s_file_number = 12;
-string World::s_file_tag = "a";
+string World::s_file_tag = "b";
 
 int World::s_file_quality = 0;
 string World::s_file_sample = "MultiJittered";
@@ -99,7 +99,7 @@ string World::s_file_sample = "MultiJittered";
 void
 World::build(void) {
 
-	int num_samples = 1;
+	int num_samples = 100;
 	s_file_quality = num_samples;
 
 	vp.set_hres(300);
@@ -109,12 +109,7 @@ World::build(void) {
 
 	background_color = black;
 
-	tracer_ptr = new GlobalTrace(this);
-
-	Ambient* ambient_ptr = new Ambient;
-	ambient_ptr->scale_radiance(0.0);
-	set_ambient_light(ambient_ptr);
-
+	tracer_ptr = new PathTrace(this);
 
 	Pinhole* pinhole_ptr = new Pinhole;
 	pinhole_ptr->set_eye(27.6, 27.4, -80.0);
@@ -135,25 +130,19 @@ World::build(void) {
 	double depth = 55.92;	// z direction
 
 
+							// the ceiling light - doesn't need samples
+
 	Emissive* emissive_ptr = new Emissive;
 	emissive_ptr->set_ce(1.0, 0.73, 0.4);
-	emissive_ptr->scale_radiance(100.0);
+	emissive_ptr->scale_radiance(100);
 
 	p0 = Point3D(21.3, height - 0.001, 22.7);
 	a = Vector3D(0.0, 0.0, 10.5);
 	b = Vector3D(13.0, 0.0, 0.0);
 	normal = Normal(0.0, -1.0, 0.0);
-
 	Rectangle* light_ptr = new Rectangle(p0, a, b, normal);
 	light_ptr->set_material(emissive_ptr);
-	light_ptr->set_sampler(new MultiJittered(num_samples));
-	light_ptr->set_shadows(false);
 	add_object(light_ptr);
-
-	AreaLight* ceiling_light_ptr = new AreaLight(*this);
-	ceiling_light_ptr->set_object(light_ptr);
-	ceiling_light_ptr->set_shadows(true);
-	add_light(ceiling_light_ptr);
 
 
 	// left wall
@@ -178,7 +167,7 @@ World::build(void) {
 	Matte* matte_ptr2 = new Matte;
 	matte_ptr2->set_ka(0.0);
 	matte_ptr2->set_kd(0.6);
-	matte_ptr2->set_cd(0.37, 0.59, 0.2);	 // green  
+	matte_ptr2->set_cd(0.37, 0.59, 0.2);	 // green   from Photoshop
 	matte_ptr2->set_sampler(new MultiJittered(num_samples));
 
 	p0 = Point3D(0.0, 0.0, 0.0);
@@ -195,7 +184,7 @@ World::build(void) {
 	Matte* matte_ptr3 = new Matte;
 	matte_ptr3->set_ka(0.0);
 	matte_ptr3->set_kd(0.6);
-	matte_ptr3->set_cd(white);
+	matte_ptr3->set_cd(1.0);	 // white
 	matte_ptr3->set_sampler(new MultiJittered(num_samples));
 
 	p0 = Point3D(0.0, 0.0, depth);
@@ -279,6 +268,7 @@ World::build(void) {
 	Rectangle* short_side_ptr4 = new Rectangle(p0, a, b);
 	short_side_ptr4->set_material(matte_ptr3);
 	add_object(short_side_ptr4);
+
 
 
 
