@@ -39,6 +39,9 @@ class Material {
 
 		virtual RGBColor path_shade(ShadeRec& sr);
 		
+		virtual RGBColor global_shade(ShadeRec& sr);
+
+
 	protected:
 	
 		Material& 								

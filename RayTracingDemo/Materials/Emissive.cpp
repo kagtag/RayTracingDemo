@@ -52,6 +52,19 @@ Emissive::path_shade(ShadeRec& sr)
 		return black;
 }
 
+RGBColor 
+Emissive::global_shade(ShadeRec& sr)
+{
+	// be careful not to render the direct illumination twice
+	if (sr.depth == 1)
+		return black;
+
+	if (-sr.normal * sr.ray.d > 0.0)
+		return ls*ce;
+	else
+		return black;
+}
+
 RGBColor
 Emissive::shade(ShadeRec& sr)
 {

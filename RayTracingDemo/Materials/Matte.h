@@ -55,6 +55,9 @@ class Matte: public Material {
 		// For Figuire 26.7
 		void set_sampler(Sampler* sampler);
 
+
+		virtual RGBColor global_shade(ShadeRec& sr);
+
 	private:
 		
 		// ka and kd can be different.

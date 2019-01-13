@@ -175,6 +175,7 @@
     <ClCompile Include="Samplers\Sampler.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Tracers\AreaLighting.cpp" />
+    <ClCompile Include="Tracers\GlobalTrace.cpp" />
     <ClCompile Include="Tracers\MultipleObjects.cpp" />
     <ClCompile Include="Tracers\PathTrace.cpp" />
     <ClCompile Include="Tracers\RayCast.cpp" />
@@ -255,6 +256,7 @@
     <ClInclude Include="Samplers\Regular.h" />
     <ClInclude Include="Samplers\Sampler.h" />
     <ClInclude Include="Tracers\AreaLighting.h" />
+    <ClInclude Include="Tracers\GlobalTrace.h" />
     <ClInclude Include="Tracers\MultipleObjects.h" />
     <ClInclude Include="Tracers\PathTrace.h" />
     <ClInclude Include="Tracers\RayCast.h" />

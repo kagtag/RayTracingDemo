@@ -58,4 +58,7 @@ RGBColor Material::path_shade(ShadeRec & sr)
 }
 
 
-
+RGBColor Material::global_shade(ShadeRec & sr)
+{
+	return black;
+}

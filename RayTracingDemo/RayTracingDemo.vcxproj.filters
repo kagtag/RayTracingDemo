@@ -297,6 +297,9 @@
     <ClCompile Include="Tracers\PathTrace.cpp">
       <Filter>Tracers</Filter>
     </ClCompile>
+    <ClCompile Include="Tracers\GlobalTrace.cpp">
+      <Filter>Tracers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\BBox.h">
@@ -534,6 +537,9 @@
       <Filter>Materials</Filter>
     </ClInclude>
     <ClInclude Include="Tracers\PathTrace.h">
+      <Filter>Tracers</Filter>
+    </ClInclude>
+    <ClInclude Include="Tracers\GlobalTrace.h">
       <Filter>Tracers</Filter>
     </ClInclude>
   </ItemGroup>
