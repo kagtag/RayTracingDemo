@@ -75,7 +75,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\;GeometricObjects\Triangles\;BTDFs\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\;GeometricObjects\Triangles\;BTDFs\;;Textures\;</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -83,7 +83,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\;GeometricObjects\Triangles\;BTDFs\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\;GeometricObjects\Triangles\;BTDFs\;;Textures\;</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -120,6 +120,7 @@
     <ClCompile Include="BRDFs\GlossySpecular.cpp" />
     <ClCompile Include="BRDFs\Lambertian.cpp" />
     <ClCompile Include="BRDFs\PerfectSpecular.cpp" />
+    <ClCompile Include="BRDFs\SV_Lambertian.cpp" />
     <ClCompile Include="BTDFs\BTDF.cpp" />
     <ClCompile Include="BTDFs\FresnelTransmitter.cpp" />
     <ClCompile Include="BTDFs\PerfectTransmitter.cpp" />
@@ -171,6 +172,7 @@
     <ClCompile Include="Materials\Matte.cpp" />
     <ClCompile Include="Materials\Phong.cpp" />
     <ClCompile Include="Materials\Reflective.cpp" />
+    <ClCompile Include="Materials\SV_Matte.cpp" />
     <ClCompile Include="Materials\Transparent.cpp" />
     <ClCompile Include="Samplers\Hammersley.cpp" />
     <ClCompile Include="Samplers\Jittered.cpp" />
@@ -180,6 +182,13 @@
     <ClCompile Include="Samplers\Regular.cpp" />
     <ClCompile Include="Samplers\Sampler.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Textures\ConstantColor.cpp" />
+    <ClCompile Include="Textures\Image.cpp" />
+    <ClCompile Include="Textures\ImageTexture.cpp" />
+    <ClCompile Include="Textures\LightProbe.cpp" />
+    <ClCompile Include="Textures\Mapping.cpp" />
+    <ClCompile Include="Textures\SphericalMap.cpp" />
+    <ClCompile Include="Textures\Texture.cpp" />
     <ClCompile Include="Tracers\AreaLighting.cpp" />
     <ClCompile Include="Tracers\GlobalTrace.cpp" />
     <ClCompile Include="Tracers\MultipleObjects.cpp" />
@@ -209,6 +218,7 @@
     <ClInclude Include="BRDFs\GlossySpecular.h" />
     <ClInclude Include="BRDFs\Lambertian.h" />
     <ClInclude Include="BRDFs\PerfectSpecular.h" />
+    <ClInclude Include="BRDFs\SV_Lambertian.h" />
     <ClInclude Include="BTDFs\BTDF.h" />
     <ClInclude Include="BTDFs\FresnelTransmitter.h" />
     <ClInclude Include="BTDFs\PerfectTransmitter.h" />
@@ -259,6 +269,7 @@
     <ClInclude Include="Materials\Matte.h" />
     <ClInclude Include="Materials\Phong.h" />
     <ClInclude Include="Materials\Reflective.h" />
+    <ClInclude Include="Materials\SV_Matte.h" />
     <ClInclude Include="Materials\Transparent.h" />
     <ClInclude Include="Samplers\Hammersley.h" />
     <ClInclude Include="Samplers\Jittered.h" />
@@ -267,6 +278,13 @@
     <ClInclude Include="Samplers\PureRandom.h" />
     <ClInclude Include="Samplers\Regular.h" />
     <ClInclude Include="Samplers\Sampler.h" />
+    <ClInclude Include="Textures\ConstantColor.h" />
+    <ClInclude Include="Textures\Image.h" />
+    <ClInclude Include="Textures\ImageTexture.h" />
+    <ClInclude Include="Textures\LightProbe.h" />
+    <ClInclude Include="Textures\Mapping.h" />
+    <ClInclude Include="Textures\SphericalMap.h" />
+    <ClInclude Include="Textures\Texture.h" />
     <ClInclude Include="Tracers\AreaLighting.h" />
     <ClInclude Include="Tracers\GlobalTrace.h" />
     <ClInclude Include="Tracers\MultipleObjects.h" />
