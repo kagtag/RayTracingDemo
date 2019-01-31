@@ -75,7 +75,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\;GeometricObjects\Triangles\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\;GeometricObjects\Triangles\;BTDFs\;</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -83,7 +83,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\;GeometricObjects\Triangles\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\;GeometricObjects\Triangles\;BTDFs\;</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -116,9 +116,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BRDFs\BRDF.cpp" />
+    <ClCompile Include="BRDFs\FresnelReflector.cpp" />
     <ClCompile Include="BRDFs\GlossySpecular.cpp" />
     <ClCompile Include="BRDFs\Lambertian.cpp" />
     <ClCompile Include="BRDFs\PerfectSpecular.cpp" />
+    <ClCompile Include="BTDFs\BTDF.cpp" />
+    <ClCompile Include="BTDFs\FresnelTransmitter.cpp" />
+    <ClCompile Include="BTDFs\PerfectTransmitter.cpp" />
     <ClCompile Include="Cameras\Camera.cpp" />
     <ClCompile Include="Cameras\FishEye.cpp" />
     <ClCompile Include="Cameras\Pinhole.cpp" />
@@ -160,12 +164,14 @@
     <ClCompile Include="Lights\EnvironmentLight.cpp" />
     <ClCompile Include="Lights\Light.cpp" />
     <ClCompile Include="Lights\PointLight.cpp" />
+    <ClCompile Include="Materials\Dielectric.cpp" />
     <ClCompile Include="Materials\Emissive.cpp" />
     <ClCompile Include="Materials\GlossyReflector.cpp" />
     <ClCompile Include="Materials\Material.cpp" />
     <ClCompile Include="Materials\Matte.cpp" />
     <ClCompile Include="Materials\Phong.cpp" />
     <ClCompile Include="Materials\Reflective.cpp" />
+    <ClCompile Include="Materials\Transparent.cpp" />
     <ClCompile Include="Samplers\Hammersley.cpp" />
     <ClCompile Include="Samplers\Jittered.cpp" />
     <ClCompile Include="Samplers\MultiJittered.cpp" />
@@ -199,9 +205,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BRDFs\BRDF.h" />
+    <ClInclude Include="BRDFs\FresnelReflector.h" />
     <ClInclude Include="BRDFs\GlossySpecular.h" />
     <ClInclude Include="BRDFs\Lambertian.h" />
     <ClInclude Include="BRDFs\PerfectSpecular.h" />
+    <ClInclude Include="BTDFs\BTDF.h" />
+    <ClInclude Include="BTDFs\FresnelTransmitter.h" />
+    <ClInclude Include="BTDFs\PerfectTransmitter.h" />
     <ClInclude Include="Cameras\Camera.h" />
     <ClInclude Include="Cameras\FishEye.h" />
     <ClInclude Include="Cameras\Pinhole.h" />
@@ -242,12 +252,14 @@
     <ClInclude Include="Lights\EnvironmentLight.h" />
     <ClInclude Include="Lights\Light.h" />
     <ClInclude Include="Lights\PointLight.h" />
+    <ClInclude Include="Materials\Dielectric.h" />
     <ClInclude Include="Materials\Emissive.h" />
     <ClInclude Include="Materials\GlossyReflector.h" />
     <ClInclude Include="Materials\Material.h" />
     <ClInclude Include="Materials\Matte.h" />
     <ClInclude Include="Materials\Phong.h" />
     <ClInclude Include="Materials\Reflective.h" />
+    <ClInclude Include="Materials\Transparent.h" />
     <ClInclude Include="Samplers\Hammersley.h" />
     <ClInclude Include="Samplers\Jittered.h" />
     <ClInclude Include="Samplers\MultiJittered.h" />

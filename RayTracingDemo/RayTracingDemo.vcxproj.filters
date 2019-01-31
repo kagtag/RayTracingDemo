@@ -55,6 +55,9 @@
     <Filter Include="GeometricObjects\BeveledObjects">
       <UniqueIdentifier>{c26cc6c0-1cf3-471d-bb01-88744fac6d7a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BTDFs">
+      <UniqueIdentifier>{421c1e10-aa0e-4a73-a4fc-5ad319ebbdc6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utilities\BBox.cpp">
@@ -300,6 +303,24 @@
     <ClCompile Include="Tracers\GlobalTrace.cpp">
       <Filter>Tracers</Filter>
     </ClCompile>
+    <ClCompile Include="BTDFs\BTDF.cpp">
+      <Filter>BTDFs</Filter>
+    </ClCompile>
+    <ClCompile Include="BTDFs\PerfectTransmitter.cpp">
+      <Filter>BTDFs</Filter>
+    </ClCompile>
+    <ClCompile Include="BTDFs\FresnelTransmitter.cpp">
+      <Filter>BTDFs</Filter>
+    </ClCompile>
+    <ClCompile Include="Materials\Transparent.cpp">
+      <Filter>Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="BRDFs\FresnelReflector.cpp">
+      <Filter>BRDFs</Filter>
+    </ClCompile>
+    <ClCompile Include="Materials\Dielectric.cpp">
+      <Filter>Materials</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\BBox.h">
@@ -541,6 +562,24 @@
     </ClInclude>
     <ClInclude Include="Tracers\GlobalTrace.h">
       <Filter>Tracers</Filter>
+    </ClInclude>
+    <ClInclude Include="BTDFs\BTDF.h">
+      <Filter>BTDFs</Filter>
+    </ClInclude>
+    <ClInclude Include="BTDFs\PerfectTransmitter.h">
+      <Filter>BTDFs</Filter>
+    </ClInclude>
+    <ClInclude Include="BTDFs\FresnelTransmitter.h">
+      <Filter>BTDFs</Filter>
+    </ClInclude>
+    <ClInclude Include="Materials\Transparent.h">
+      <Filter>Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="BRDFs\FresnelReflector.h">
+      <Filter>BRDFs</Filter>
+    </ClInclude>
+    <ClInclude Include="Materials\Dielectric.h">
+      <Filter>Materials</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
