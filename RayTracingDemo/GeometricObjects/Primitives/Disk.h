@@ -29,17 +29,17 @@ public:
 		shadow_hit(const Ray & ray, double& tmin) const;
 
 	// Area Lighting
-	virtual void
+	void
 		set_sampler(Sampler* sampler);
 
-	virtual Point3D
-		sample(void);
+	Point3D
+		sample(void) override;
 
-	virtual Normal
-		get_normal(const Point3D& p);
+	Normal
+		get_normal(const Point3D& p) override;
 
-	virtual float
-		pdf(const ShadeRec& sr);
+	float
+		pdf(const ShadeRec& sr) override;
 
 	void
 		compute_uvw(void);

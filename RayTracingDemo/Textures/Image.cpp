@@ -55,18 +55,23 @@ Image::read_ppm_file(const char* file_name) {
 
     // read-only binary sequential access
     
-    FILE* file = fopen(file_name, "rb");
-    
-    if (file == 0){
+	FILE* file;
+
+	if (fopen_s(&file, file_name, "rb") != 0)
+	{
 		cout << "could not open file" << endl;
+		return;
 	}
 	else
+	{
 		cout << "file opened" << endl;
+
+	}
 
     // PPM header
     
     unsigned char ppm_type;
-    if (fscanf(file, "P%c\n", &ppm_type) != 1){
+    if (fscanf_s(file, "P%c\n", &ppm_type) != 1){
 		cout << "Invalid PPM signature" << endl;
 	}
 	
@@ -79,12 +84,12 @@ Image::read_ppm_file(const char* file_name) {
     // skip comments
     
     unsigned char dummy;
-    while (fscanf(file ,"#%c", &dummy)) 
+    while (fscanf_s(file ,"#%c", &dummy)) 
         while (fgetc(file) != '\n');
 
     // read image size
     
-    if (fscanf(file, "%d %d\n", &hres, &vres) != 2){
+    if (fscanf_s(file, "%d %d\n", &hres, &vres) != 2){
 		cout << "Invalid image size" << endl;
 	}
 
@@ -103,7 +108,7 @@ Image::read_ppm_file(const char* file_name) {
     // maximum value to be found in the PPM file (usually 255)
     
     unsigned int max_value;
-    if (fscanf(file, "%d\n", &max_value) != 1){
+    if (fscanf_s(file, "%d\n", &max_value) != 1){
 		cout << "Invalid max value" << endl;
 	}
 
@@ -121,7 +126,7 @@ Image::read_ppm_file(const char* file_name) {
             unsigned char green;
             unsigned char blue;
             
-            if (fscanf(file, "%c%c%c", &red, &green, &blue) != 3) {
+            if (fscanf_s(file, "%c%c%c", &red, &green, &blue) != 3) {
 				cout << "Invalid image" << endl;
 			}
 

@@ -38,7 +38,7 @@ public:
 		set_kd(const float kd);
 
 	void
-		set_cd(const Texture* _cd);
+		set_cd(Texture* _cd);
 
 
 private:
@@ -63,8 +63,12 @@ SV_Lambertian::set_kd(const float k) {
 	kd = k;
 }
 
-void
-SV_Lambertian::set_cd(const Texture* _cd)
+inline void SV_Lambertian::set_cd(Texture * _cd)
 {
+	if (cd)
+	{
+		delete cd;
+		cd = NULL;
+	}
 	cd = _cd;
 }

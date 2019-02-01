@@ -16,8 +16,12 @@ const double Sphere::kEpsilon = 0.001;
 Sphere::Sphere(void)	
 	: 	GeometricObject(),
 		center(0.0),
-		radius(1.0)
-{}
+		radius(1.0),
+	area(4*PI),
+	inv_area(0.25*PI),
+	sampler_ptr(NULL)
+{
+}
 
 
 // ---------------------------------------------------------------- constructor
@@ -25,8 +29,12 @@ Sphere::Sphere(void)
 Sphere::Sphere(Point3D c, double r)
 	: 	GeometricObject(),
 		center(c),
-		radius(r)
-{}
+		radius(r),
+	area(4*PI*radius*radius),
+	inv_area(1/area),
+	sampler_ptr(NULL)
+{
+}
 
 
 // ---------------------------------------------------------------- clone
@@ -42,8 +50,14 @@ Sphere::clone(void) const {
 Sphere::Sphere (const Sphere& sphere)
 	: 	GeometricObject(sphere),
 		center(sphere.center),
-		radius(sphere.radius)
-{}
+		radius(sphere.radius),
+	area(sphere.area),
+	inv_area(sphere.inv_area)
+{
+	if (sphere.sampler_ptr)
+		sampler_ptr = sphere.sampler_ptr->clone();
+	else  sampler_ptr = NULL;
+}
 
 
 
@@ -60,13 +74,31 @@ Sphere::operator= (const Sphere& rhs)
 	center 	= rhs.center;
 	radius	= rhs.radius;
 
+	area = rhs.area;
+	inv_area = rhs.inv_area;
+
+	if (sampler_ptr) {
+		delete sampler_ptr;
+		sampler_ptr = NULL;
+	}
+
+	if (rhs.sampler_ptr)
+		sampler_ptr = rhs.sampler_ptr->clone();
+
 	return (*this);
 }
 
 
 // ---------------------------------------------------------------- destructor
 
-Sphere::~Sphere(void) {}
+Sphere::~Sphere(void) 
+{
+	if (sampler_ptr)
+	{
+		delete sampler_ptr;
+		sampler_ptr = NULL;
+	}
+}
 
 
 //---------------------------------------------------------------- hit
@@ -149,5 +181,34 @@ Sphere::shadow_hit(const Ray & ray, double& tmin) const
 
 
 
+void
+Sphere::set_sampler(Sampler* sampler)
+{
+	if (sampler_ptr)
+	{
+		delete sampler_ptr;
+		sampler_ptr = NULL;
+	}
 
+	sampler_ptr = sampler;
+	sampler_ptr->map_samples_to_sphere();
+}
 
+Point3D
+Sphere::sample(void)
+{
+	Point3D sample_point = sampler_ptr->sample_sphere();
+	return (center + sample_point);
+}
+
+Normal
+Sphere::get_normal(const Point3D& p)
+{
+	return (p - center).hat();
+}
+
+float
+Sphere::pdf(const ShadeRec& sr)
+{
+	return inv_area;
+}
