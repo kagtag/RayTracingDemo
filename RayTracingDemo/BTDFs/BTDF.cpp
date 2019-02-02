@@ -1,43 +1,36 @@
-#include "Constants.h"
+// 	Copyright (C) Kevin Suffern 2000-2007.
+//	This C++ code is for non-commercial purposes only.
+//	This C++ code is licensed under the GNU General Public License Version 2.
+//	See the file COPYING.txt for the full license.
+
+
 #include "BTDF.h"
 
-// ---------------------------------------------------------- default constructor
+// ------------------------------------------------------------------------ default constructor
 
-BTDF::BTDF(void)
-	:kt(0.0),
-	ior(1.0)
-{}
+BTDF::BTDF(void) {}
 
 
-// ---------------------------------------------------------- copy constructor
+// ------------------------------------------------------------------------ copy constructor
 
-BTDF::BTDF(const BTDF& btdf) 
-	:kt(btdf.kt),
-	ior(btdf.ior)
-{
-
-}
+BTDF::BTDF(const BTDF& btdf) {}
 
 
+// ------------------------------------------------------------------------ destructor
 
-// --------------------------------------------------------------- assignment operator
+BTDF::~BTDF(void) {}
+
+
+// ------------------------------------------------------------------------ assignment operator
 
 BTDF&
 BTDF::operator= (const BTDF& rhs) {
 	if (this == &rhs)
 		return (*this);
 
-	kt = rhs.kt;
-	ior = rhs.ior;
-
 	return (*this);
 }
 
-
-// ---------------------------------------------------------- destructor
-
-BTDF::~BTDF(void) 
-{}
 
 // ------------------------------------------------------------------------ f
 
@@ -51,14 +44,6 @@ BTDF::f(const ShadeRec& sr, const Vector3D& wo, const Vector3D& wi) const {
 
 RGBColor
 BTDF::sample_f(const ShadeRec& sr, const Vector3D& wo, Vector3D& wi) const {
-	return (black);
-}
-
-
-// ------------------------------------------------------------------------ sample_f
-
-RGBColor
-BTDF::sample_f(const ShadeRec& sr, const Vector3D& wo, Vector3D& wi, float& pdf) const {
 	return (black);
 }
 

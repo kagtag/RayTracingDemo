@@ -1,5 +1,33 @@
 #include "FresnelTransmitter.h"
 
+FresnelTransmitter::FresnelTransmitter(void)
+	:BTDF(),
+	eta_in(1.0),
+	eta_out(1.0)
+{}
+
+FresnelTransmitter::FresnelTransmitter(const FresnelTransmitter& pt)
+	:BTDF(pt),
+	eta_in(pt.eta_in),
+	eta_out(pt.eta_out)
+{}
+
+
+FresnelTransmitter::~FresnelTransmitter(void)
+{}
+
+FresnelTransmitter&
+FresnelTransmitter::operator= (const FresnelTransmitter& rhs)
+{
+	if (this == &rhs)
+		return (*this);
+
+	eta_in = rhs.eta_in;
+	eta_out = rhs.eta_out;
+
+	return (*this);
+}
+
 FresnelTransmitter*
 FresnelTransmitter::clone(void)const
 {
@@ -27,7 +55,8 @@ FresnelTransmitter::sample_f(const ShadeRec& sr,
 	float cos_teta2 = sqrt(temp);
 	wt = -wo / eta - (cos_teta2 - cos_thetai / eta)*n;
 
-	return (kt / (eta*eta)* white / fabs(sr.normal*wt)) ;
+	return white;
+	//return (kt / (eta*eta)* white / fabs(sr.normal*wt)) ;
 }
 
 bool

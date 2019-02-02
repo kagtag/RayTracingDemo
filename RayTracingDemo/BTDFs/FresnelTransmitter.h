@@ -5,8 +5,19 @@ class FresnelTransmitter : public BTDF
 {
 public:
 
+	FresnelTransmitter(void);
+
+	FresnelTransmitter(const FresnelTransmitter& pt);
+
 	virtual FresnelTransmitter*
 		clone(void)const;
+
+	virtual ~FresnelTransmitter(void);
+
+	FresnelTransmitter&
+		operator= (const FresnelTransmitter& rhs);
+
+
 
 	virtual RGBColor
 		sample_f(const ShadeRec& sr, const Vector3D& wo, Vector3D& wt) const;

@@ -1,6 +1,75 @@
 
 #include "Transparent.h"
 
+Transparent::Transparent(void)
+	:Phong(),
+	reflective_brdf(new PerfectSpecular),
+	specular_btdf(new PerfectTransmitter)
+{
+}
+
+Transparent::Transparent(const Transparent& rm)
+	:Phong(rm)
+{
+	if (rm.reflective_brdf)
+		reflective_brdf = rm.reflective_brdf->clone();
+	else
+		reflective_brdf = NULL;
+
+	if (rm.specular_btdf)
+		specular_btdf = rm.specular_btdf->clone();
+	else
+		specular_btdf = NULL;
+}
+
+Transparent&
+Transparent::operator= (const Transparent& rhs)
+{
+	if (this == &rhs)
+		return (*this);
+
+	Phong::operator=(rhs);
+
+	if (reflective_brdf) {
+		delete reflective_brdf;
+		reflective_brdf = NULL;
+	}
+
+	if (rhs.reflective_brdf)
+		reflective_brdf = rhs.reflective_brdf->clone();
+
+	if (specular_btdf)
+	{
+		delete specular_btdf;
+		specular_btdf = NULL;
+	}
+
+	if (rhs.specular_btdf)
+		specular_btdf = rhs.specular_btdf->clone();
+
+	return (*this);
+}
+
+Transparent*
+Transparent::clone(void) const
+{
+	return new Transparent(*this);
+}
+
+Transparent::Transparent::~Transparent(void)
+{
+	if (reflective_brdf) {
+		delete reflective_brdf;
+		reflective_brdf = NULL;
+	}
+
+	if (specular_btdf)
+	{
+		delete specular_btdf;
+		specular_btdf = NULL;
+	}
+}
+
 RGBColor
 Transparent::shade(ShadeRec& sr)
 {
