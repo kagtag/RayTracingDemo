@@ -7,7 +7,7 @@ class Texture
 public:
 	Texture(void);
 
-	Texture(const Texture& material);
+	Texture(const Texture& texture);
 
 
 
