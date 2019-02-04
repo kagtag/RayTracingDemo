@@ -11,11 +11,20 @@ public:
 
 	SolidCylinder(const SolidCylinder& sc);
 
-	virtual bool
-		hit(const Ray& ray, double tmin, ShadeRec& sr)const;
+	
+	~SolidCylinder(void);
 
-	//virtual bool
-	//	shadow_hit(const Ray& ray, double& tmin)const;
+	SolidCylinder&
+		operator= (const SolidCylinder& c);
+
+	virtual SolidCylinder*
+		clone(void) const;
+
+	bool
+		hit(const Ray& ray, double& tmin, ShadeRec& sr)const override;
+
+	bool
+		shadow_hit(const Ray& ray, double& tmin)const override;
 
 	// TODO
 	//void set_top_material(Material* mat_ptr);

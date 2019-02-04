@@ -6,8 +6,8 @@
 #include "Torus.h"
 
 BeveledCylinder::BeveledCylinder()
+	:BeveledCylinder(-1.0, 1.0, 2.0, 1.0)
 {
-	BeveledCylinder(-1.0, 1.0, 2.0, 1.0);
 }
 
 

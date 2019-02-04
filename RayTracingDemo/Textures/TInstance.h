@@ -47,7 +47,7 @@ public:
 		rotate_x(const double theta);
 
 	virtual void
-		rotate_y(const double theta;
+		rotate_y(const double theta);
 
 	virtual void
 		rotate_z(const double theta);
