@@ -154,9 +154,11 @@
     <ClCompile Include="BuildShadedObjects.cpp" />
     <ClCompile Include="GeometricObjects\Primitives\Torus.cpp" />
     <ClCompile Include="GeometricObjects\Triangles\FlatMeshTriangle.cpp" />
+    <ClCompile Include="GeometricObjects\Triangles\FlatUVMeshTriangle.cpp" />
     <ClCompile Include="GeometricObjects\Triangles\MeshTriangle.cpp" />
     <ClCompile Include="GeometricObjects\Triangles\SmoothMeshTriangle.cpp" />
     <ClCompile Include="GeometricObjects\Triangles\SmoothTriangle.cpp" />
+    <ClCompile Include="GeometricObjects\Triangles\SmoothUVMeshTriangle.cpp" />
     <ClCompile Include="GeometricObjects\Triangles\Triangle.cpp" />
     <ClCompile Include="Lights\Ambient.cpp" />
     <ClCompile Include="Lights\AmbientOccluder.cpp" />
@@ -187,7 +189,6 @@
     <ClCompile Include="Textures\Image.cpp" />
     <ClCompile Include="Textures\ImageTexture.cpp" />
     <ClCompile Include="Textures\LightProbe.cpp" />
-    <ClCompile Include="Textures\LightProbeMap.cpp" />
     <ClCompile Include="Textures\Mapping.cpp" />
     <ClCompile Include="Textures\SphericalMap.cpp" />
     <ClCompile Include="Textures\Texture.cpp" />
@@ -253,9 +254,11 @@
     <ClInclude Include="GeometricObjects\Primitives\Sphere.h" />
     <ClInclude Include="GeometricObjects\Primitives\Torus.h" />
     <ClInclude Include="GeometricObjects\Triangles\FlatMeshTriangle.h" />
+    <ClInclude Include="GeometricObjects\Triangles\FlatUVMeshTriangle.h" />
     <ClInclude Include="GeometricObjects\Triangles\MeshTriangle.h" />
     <ClInclude Include="GeometricObjects\Triangles\SmoothMeshTriangle.h" />
     <ClInclude Include="GeometricObjects\Triangles\SmoothTriangle.h" />
+    <ClInclude Include="GeometricObjects\Triangles\SmoothUVMeshTriangle.h" />
     <ClInclude Include="GeometricObjects\Triangles\Triangle.h" />
     <ClInclude Include="Lights\Ambient.h" />
     <ClInclude Include="Lights\AmbientOccluder.h" />
@@ -285,7 +288,6 @@
     <ClInclude Include="Textures\Image.h" />
     <ClInclude Include="Textures\ImageTexture.h" />
     <ClInclude Include="Textures\LightProbe.h" />
-    <ClInclude Include="Textures\LightProbeMap.h" />
     <ClInclude Include="Textures\Mapping.h" />
     <ClInclude Include="Textures\SphericalMap.h" />
     <ClInclude Include="Textures\Texture.h" />

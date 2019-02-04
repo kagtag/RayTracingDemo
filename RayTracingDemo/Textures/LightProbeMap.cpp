@@ -1,3 +1,0 @@
-#include "LightProbeMap.h"
-
-// TODO

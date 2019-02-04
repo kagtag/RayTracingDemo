@@ -354,8 +354,11 @@
     <ClCompile Include="Textures\CylindricalMap.cpp">
       <Filter>Textures</Filter>
     </ClCompile>
-    <ClCompile Include="Textures\LightProbeMap.cpp">
-      <Filter>Textures</Filter>
+    <ClCompile Include="GeometricObjects\Triangles\SmoothUVMeshTriangle.cpp">
+      <Filter>GeometricObjects\Triangles</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometricObjects\Triangles\FlatUVMeshTriangle.cpp">
+      <Filter>GeometricObjects\Triangles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -647,8 +650,11 @@
     <ClInclude Include="Textures\CylindricalMap.h">
       <Filter>Textures</Filter>
     </ClInclude>
-    <ClInclude Include="Textures\LightProbeMap.h">
-      <Filter>Textures</Filter>
+    <ClInclude Include="GeometricObjects\Triangles\SmoothUVMeshTriangle.h">
+      <Filter>GeometricObjects\Triangles</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObjects\Triangles\FlatUVMeshTriangle.h">
+      <Filter>GeometricObjects\Triangles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

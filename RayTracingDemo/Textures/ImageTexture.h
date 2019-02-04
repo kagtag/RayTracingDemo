@@ -1,11 +1,17 @@
-#pragma once
+#ifndef __IMAGE_TEXTURE__
+#define __IMAGE_TEXTURE__
 
-#include "Texture.h"
+// 	Copyright (C) Kevin Suffern 2000-2007.
+//	This C++ code is for non-commercial purposes only.
+//	This C++ code is licensed under the GNU General Public License Version 2.
+//	See the file COPYING.txt for the full license.
+
+
 #include "Image.h"
 #include "Mapping.h"
+#include "Texture.h"
 
-class ImageTexture : public Texture
-{
+class ImageTexture : public Texture {
 public:
 
 	ImageTexture(void);
@@ -23,13 +29,8 @@ public:
 	virtual
 		~ImageTexture(void);
 
-
-	//
-
 	virtual RGBColor
-		get_color(const ShadeRec& sr)const;
-
-	//
+		get_color(const ShadeRec& sr) const;
 
 	void
 		set_image(Image* _image_ptr);
@@ -39,8 +40,28 @@ public:
 
 private:
 
-	int hres;			// horizontal image resolution
-	int vres;			// vertical image resolution
-	Image* image_ptr;	// the image
-	Mapping* mapping_ptr;// mapping technique used, if any
+	int 		hres;			// horizontal resolution of the image
+	int			vres;			// vertical resolution of the image
+	Image*		image_ptr;		// the image
+	Mapping*	mapping_ptr;	// mapping technique used, if any
 };
+
+
+// ---------------------------------------------------------------- set_image
+
+inline void
+ImageTexture::set_image(Image* _image_ptr) {
+	image_ptr = _image_ptr;
+	hres = image_ptr->get_hres();
+	vres = image_ptr->get_vres();
+}
+
+
+// ---------------------------------------------------------------- set_mapping
+
+inline void
+ImageTexture::set_mapping(Mapping* map_ptr) {
+	mapping_ptr = map_ptr;
+}
+
+#endif		
