@@ -120,23 +120,30 @@ Image::read_ppm_file(const char* file_name) {
 
     // read pixel data
     
+	unsigned char* red = new unsigned char;
+	unsigned char* green = new unsigned char;
+	unsigned char* blue = new unsigned char;
+
     for (unsigned int y = 0; y < vres; y++) {
         for (unsigned int x = 0; x < hres; x++) {
-            unsigned char red;
-            unsigned char green;
-            unsigned char blue;
-            
-            if (fscanf_s(file, "%c%c%c", &red, &green, &blue) != 3) {
-				cout << "Invalid image" << endl;
-			}
 
-			float r = red   * inv_max_value;
-			float g = green * inv_max_value;
-			float b = blue  * inv_max_value;
+			// old fscanf is deprecated.
+			// we have to specify how many bits to read for fscanf_s function.
+			fscanf_s(file, "%c", red, sizeof(char));
+			fscanf_s(file, "%c", green, sizeof(char));
+			fscanf_s(file, "%c", blue, sizeof(char));
+
+			float r = *red   * inv_max_value;
+			float g = *green * inv_max_value;
+			float b = *blue  * inv_max_value;
 
 			pixels.push_back(RGBColor(r, g, b));
         }
     }
+
+	delete red;
+	delete green;
+	delete blue;
 
     // close file
     

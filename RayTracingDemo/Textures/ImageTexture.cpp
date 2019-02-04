@@ -30,7 +30,10 @@ ImageTexture::ImageTexture(const ImageTexture& it)
 	vres(it.vres)
 {
 	if (it.image_ptr)
+	{	
+		image_ptr = new Image;
 		*image_ptr = *it.image_ptr;
+	}
 	else
 		image_ptr = NULL;
 
