@@ -55,6 +55,7 @@ FresnelTransmitter::sample_f(const ShadeRec& sr,
 	float cos_teta2 = sqrt(temp);
 	wt = -wo / eta - (cos_teta2 - cos_thetai / eta)*n;
 
+#error
 	return white;
 	//return (kt / (eta*eta)* white / fabs(sr.normal*wt)) ;
 }

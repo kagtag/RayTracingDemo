@@ -183,9 +183,11 @@
     <ClCompile Include="Samplers\Sampler.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Textures\ConstantColor.cpp" />
+    <ClCompile Include="Textures\CylindricalMap.cpp" />
     <ClCompile Include="Textures\Image.cpp" />
     <ClCompile Include="Textures\ImageTexture.cpp" />
     <ClCompile Include="Textures\LightProbe.cpp" />
+    <ClCompile Include="Textures\LightProbeMap.cpp" />
     <ClCompile Include="Textures\Mapping.cpp" />
     <ClCompile Include="Textures\SphericalMap.cpp" />
     <ClCompile Include="Textures\Texture.cpp" />
@@ -279,9 +281,11 @@
     <ClInclude Include="Samplers\Regular.h" />
     <ClInclude Include="Samplers\Sampler.h" />
     <ClInclude Include="Textures\ConstantColor.h" />
+    <ClInclude Include="Textures\CylindricalMap.h" />
     <ClInclude Include="Textures\Image.h" />
     <ClInclude Include="Textures\ImageTexture.h" />
     <ClInclude Include="Textures\LightProbe.h" />
+    <ClInclude Include="Textures\LightProbeMap.h" />
     <ClInclude Include="Textures\Mapping.h" />
     <ClInclude Include="Textures\SphericalMap.h" />
     <ClInclude Include="Textures\Texture.h" />

@@ -67,6 +67,8 @@
 
 #include "Transparent.h"
 
+#include "SV_Matte.h"
+
 // utilities
 
 #include "Vector3D.h"
@@ -185,25 +187,25 @@ World::build(void) {
 	add_object(sphere_ptr2);
 
 
-	//Checker3D* checker_ptr = new Checker3D;
-	//checker_ptr->set_size(4);
-	//checker_ptr->set_color1(0.75);
-	//checker_ptr->set_color2(white);
+	Checker3D* checker_ptr = new Checker3D;
+	checker_ptr->set_size(4);
+	checker_ptr->set_color1(0.75);
+	checker_ptr->set_color2(white);
 
-	//SV_Matte* sv_matte_ptr = new SV_Matte;
-	//sv_matte_ptr->set_ka(0.5);
-	//sv_matte_ptr->set_kd(0.35);
-	//sv_matte_ptr->set_cd(checker_ptr);
+	SV_Matte* sv_matte_ptr = new SV_Matte;
+	sv_matte_ptr->set_ka(0.5);
+	sv_matte_ptr->set_kd(0.35);
+	sv_matte_ptr->set_cd(checker_ptr);
 
 	// rectangle
 
-	//Point3D p0(-20, 0, -100);
-	//Vector3D a(0, 0, 120);
-	//Vector3D b(40, 0, 0);
+	Point3D p0(-20, 0, -100);
+	Vector3D a(0, 0, 120);
+	Vector3D b(40, 0, 0);
 
-	//Rectangle* rectangle_ptr = new Rectangle(p0, a, b);
-	//rectangle_ptr->set_material(sv_matte_ptr);
-	//add_object(rectangle_ptr);
+	Rectangle* rectangle_ptr = new Rectangle(p0, a, b);
+	rectangle_ptr->set_material(sv_matte_ptr);
+	add_object(rectangle_ptr);
 }
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////

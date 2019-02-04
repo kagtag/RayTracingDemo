@@ -105,7 +105,7 @@ SV_Matte::shade(ShadeRec& sr)
 
 			if (!in_shadow)
 				L += diffuse_brdf->f(sr, wo, wi) * sr.w.lights[j]->L(sr) 
-				//* sr.w.lights[j]->G(sr)  // ? SV_Matte::shade does not have this term
+				* sr.w.lights[j]->G(sr)  // ? SV_Matte::shade does not have this term
 				* ndotwi;
 
 		}

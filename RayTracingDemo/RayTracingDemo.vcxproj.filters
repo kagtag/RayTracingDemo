@@ -351,6 +351,12 @@
     <ClCompile Include="Textures\LightProbe.cpp">
       <Filter>Textures</Filter>
     </ClCompile>
+    <ClCompile Include="Textures\CylindricalMap.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures\LightProbeMap.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\BBox.h">
@@ -636,6 +642,12 @@
       <Filter>Textures</Filter>
     </ClInclude>
     <ClInclude Include="Textures\LightProbe.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\CylindricalMap.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\LightProbeMap.h">
       <Filter>Textures</Filter>
     </ClInclude>
   </ItemGroup>
