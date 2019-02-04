@@ -88,7 +88,7 @@ class Instance: public GeometricObject {
 
 		GeometricObject*	object_ptr;				// object to be transformed
 		Matrix				inv_matrix;		    	// inverse transformation matrix
-		static 	Matrix		forward_matrix; 		// transformation matrix
+		static 	Matrix		forward_matrix; 		// transformation matrix, // for bounding box construction
 		BBox				bbox;					// transformed object's bounding box
 		bool				transform_the_texture;	// do we transform the texture?
 			

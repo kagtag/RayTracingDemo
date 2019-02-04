@@ -360,6 +360,21 @@
     <ClCompile Include="GeometricObjects\Triangles\FlatUVMeshTriangle.cpp">
       <Filter>GeometricObjects\Triangles</Filter>
     </ClCompile>
+    <ClCompile Include="Textures\SphereChecker.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures\Checker3D.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures\PlaneChecker.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures\Checker2D.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures\TInstance.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\BBox.h">
@@ -655,6 +670,21 @@
     </ClInclude>
     <ClInclude Include="GeometricObjects\Triangles\FlatUVMeshTriangle.h">
       <Filter>GeometricObjects\Triangles</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\SphereChecker.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\Checker3D.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\PlaneChecker.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\Checker2D.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\TInstance.h">
+      <Filter>Textures</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

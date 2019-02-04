@@ -13,28 +13,18 @@
 // ---------------------------------------------------------------- default constructor
 
 SphereChecker::SphereChecker(void)
-	:	Texture(),
+	:	Checker2D(),
 		num_horizontal_checkers(20),
-		num_vertical_checkers(10),
-		horizontal_line_width(0.0),
-		vertical_line_width(0.0),
-		color1(white),
-		color2(0.5),
-		line_color(black)
+		num_vertical_checkers(10)
 {}
 
 
 // ---------------------------------------------------------------- copy constructor
 
 SphereChecker::SphereChecker(const SphereChecker& sc)
-	: 	Texture(sc),
+	: 	Checker2D(sc),
 		num_horizontal_checkers(sc.num_horizontal_checkers),
-		num_vertical_checkers(sc.num_vertical_checkers),
-		horizontal_line_width(sc.horizontal_line_width),
-		vertical_line_width(sc.vertical_line_width),
-		color1(sc.color1),
-		color2(sc.color2),
-		line_color(sc.line_color)
+		num_vertical_checkers(sc.num_vertical_checkers)
 {}
 
 
@@ -46,15 +36,10 @@ SphereChecker::operator= (const SphereChecker& rhs)
 	if (this == &rhs)
 		return (*this);
 	
-	Texture::operator=(rhs);
+	Checker2D::operator=(rhs);
 	
 	num_horizontal_checkers = rhs.num_horizontal_checkers;
 	num_vertical_checkers 	= rhs.num_vertical_checkers;
-	horizontal_line_width 	= rhs.horizontal_line_width;
-	vertical_line_width 	= rhs.vertical_line_width;
-	color1					= rhs.color1;
-	color2 					= rhs.color2;
-	line_color 				= rhs.line_color;
 
 	return (*this);
 }
