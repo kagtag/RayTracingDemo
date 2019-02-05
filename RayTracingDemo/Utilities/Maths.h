@@ -40,8 +40,8 @@ rand_float(int l, float h);
 int							// for multi-jittered sampling
 rand_int(int l, int h);   
 
-double
-clamp(const double x, const double min, const double max);
+//double
+//clamp(const double x, const double min, const double max);
 
 int
 SolveQuadric(double c[3], double s[2]);
@@ -118,9 +118,41 @@ rand_int(int l, int h) {
 
 // ---------------------------------------------------- clamp
 
+// Comment out the original version since it does not support 
+// type conversion in some cases.
+
+//inline double
+//clamp(const double x, const double min, const double max) {
+//	return (x < min ? min : (x > max ? max : x));
+//}
+
+
 inline double
-clamp(const double x, const double min, const double max) {
+clamp(double x, double min, double max) {
 	return (x < min ? min : (x > max ? max : x));
 }
+
+
+// for chapter 31, noise-based texture
+
+double
+mod(double a, const double b);
+
+double
+smooth_pulse(double e0, double e1, double e2, double e3, double x);
+
+double
+smooth_pulse_train(double e0, double e1, double e2, double e3, double period, double x);
+
+double
+smooth_step(double a, double b, double x);
+
+RGBColor
+mix_color(const RGBColor& c0, const RGBColor& c1, const double f);
+
+double
+mix_double(const double a, const double b, const double f);
+
+
 
 #endif

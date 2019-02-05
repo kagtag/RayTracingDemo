@@ -83,7 +83,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\;GeometricObjects\Triangles\;BTDFs\;;Textures\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Noise\;Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\;GeometricObjects\Triangles\;BTDFs\;;Textures\;</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -107,7 +107,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\;GeometricObjects\Triangles\;Textures\;BTDFs\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Noise\;Utilities\;World\;GeometricObjects\;Tracers\;GeometricObjects\Primitives\;Samplers\;Cameras\;Lights\;BRDFs\;Materials\;GeometricObjects\CompoundObjects\;GeometricObjects\Triangles\;Textures\;BTDFs\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -176,6 +176,9 @@
     <ClCompile Include="Materials\Reflective.cpp" />
     <ClCompile Include="Materials\SV_Matte.cpp" />
     <ClCompile Include="Materials\Transparent.cpp" />
+    <ClCompile Include="Noise\CubicNoise.cpp" />
+    <ClCompile Include="Noise\LatticeNoise.cpp" />
+    <ClCompile Include="Noise\LinearNoise.cpp" />
     <ClCompile Include="Samplers\Hammersley.cpp" />
     <ClCompile Include="Samplers\Jittered.cpp" />
     <ClCompile Include="Samplers\MultiJittered.cpp" />
@@ -188,15 +191,19 @@
     <ClCompile Include="Textures\Checker3D.cpp" />
     <ClCompile Include="Textures\ConstantColor.cpp" />
     <ClCompile Include="Textures\CylindricalMap.cpp" />
+    <ClCompile Include="Textures\FBmTexture.cpp" />
     <ClCompile Include="Textures\Image.cpp" />
     <ClCompile Include="Textures\ImageTexture.cpp" />
     <ClCompile Include="Textures\LightProbe.cpp" />
     <ClCompile Include="Textures\Mapping.cpp" />
     <ClCompile Include="Textures\PlaneChecker.cpp" />
+    <ClCompile Include="Textures\RampFBmTexture.cpp" />
     <ClCompile Include="Textures\SphereChecker.cpp" />
     <ClCompile Include="Textures\SphericalMap.cpp" />
     <ClCompile Include="Textures\Texture.cpp" />
     <ClCompile Include="Textures\TInstance.cpp" />
+    <ClCompile Include="Textures\Wood.cpp" />
+    <ClCompile Include="Textures\WrappedFBmTexture.cpp" />
     <ClCompile Include="Tracers\AreaLighting.cpp" />
     <ClCompile Include="Tracers\GlobalTrace.cpp" />
     <ClCompile Include="Tracers\MultipleObjects.cpp" />
@@ -281,6 +288,9 @@
     <ClInclude Include="Materials\Reflective.h" />
     <ClInclude Include="Materials\SV_Matte.h" />
     <ClInclude Include="Materials\Transparent.h" />
+    <ClInclude Include="Noise\CubicNoise.h" />
+    <ClInclude Include="Noise\LatticeNoise.h" />
+    <ClInclude Include="Noise\LinearNoise.h" />
     <ClInclude Include="Samplers\Hammersley.h" />
     <ClInclude Include="Samplers\Jittered.h" />
     <ClInclude Include="Samplers\MultiJittered.h" />
@@ -292,15 +302,19 @@
     <ClInclude Include="Textures\Checker3D.h" />
     <ClInclude Include="Textures\ConstantColor.h" />
     <ClInclude Include="Textures\CylindricalMap.h" />
+    <ClInclude Include="Textures\FBmTexture.h" />
     <ClInclude Include="Textures\Image.h" />
     <ClInclude Include="Textures\ImageTexture.h" />
     <ClInclude Include="Textures\LightProbe.h" />
     <ClInclude Include="Textures\Mapping.h" />
     <ClInclude Include="Textures\PlaneChecker.h" />
+    <ClInclude Include="Textures\RampFBmTexture.h" />
     <ClInclude Include="Textures\SphereChecker.h" />
     <ClInclude Include="Textures\SphericalMap.h" />
     <ClInclude Include="Textures\Texture.h" />
     <ClInclude Include="Textures\TInstance.h" />
+    <ClInclude Include="Textures\Wood.h" />
+    <ClInclude Include="Textures\WrappedFBmTexture.h" />
     <ClInclude Include="Tracers\AreaLighting.h" />
     <ClInclude Include="Tracers\GlobalTrace.h" />
     <ClInclude Include="Tracers\MultipleObjects.h" />

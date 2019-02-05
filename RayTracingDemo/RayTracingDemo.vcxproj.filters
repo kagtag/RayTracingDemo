@@ -61,6 +61,9 @@
     <Filter Include="Textures">
       <UniqueIdentifier>{c18ef5eb-827d-4bbb-bf68-c8459a2a9df2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Noise">
+      <UniqueIdentifier>{0821c643-08f4-47fa-93b1-9768cdd28a88}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utilities\BBox.cpp">
@@ -375,6 +378,27 @@
     <ClCompile Include="Textures\TInstance.cpp">
       <Filter>Textures</Filter>
     </ClCompile>
+    <ClCompile Include="Noise\CubicNoise.cpp">
+      <Filter>Noise</Filter>
+    </ClCompile>
+    <ClCompile Include="Noise\LatticeNoise.cpp">
+      <Filter>Noise</Filter>
+    </ClCompile>
+    <ClCompile Include="Noise\LinearNoise.cpp">
+      <Filter>Noise</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures\FBmTexture.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures\WrappedFBmTexture.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures\RampFBmTexture.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures\Wood.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\BBox.h">
@@ -684,6 +708,27 @@
       <Filter>Textures</Filter>
     </ClInclude>
     <ClInclude Include="Textures\TInstance.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Noise\CubicNoise.h">
+      <Filter>Noise</Filter>
+    </ClInclude>
+    <ClInclude Include="Noise\LatticeNoise.h">
+      <Filter>Noise</Filter>
+    </ClInclude>
+    <ClInclude Include="Noise\LinearNoise.h">
+      <Filter>Noise</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\FBmTexture.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\WrappedFBmTexture.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\RampFBmTexture.h">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\Wood.h">
       <Filter>Textures</Filter>
     </ClInclude>
   </ItemGroup>
